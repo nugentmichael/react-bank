@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import LoginForm from './LoginForm';
+import Content from './Content';
 import Footer from './Footer';
 import './App.scss';
 
@@ -9,7 +9,7 @@ function App() {
 		<div className="App">
 			<div className="grid grid-rows-3">
 				<Header />
-				<LoginForm />
+				<Content />
 				<Footer />
 			</div>
 		</div>
