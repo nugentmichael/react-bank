@@ -7,9 +7,11 @@ import './App.scss';
 function App() {
 	return (
 		<div className="App">
-			<Header />
-			<LoginForm />
-			<Footer />
+			<div className="grid grid-rows-3">
+				<Header />
+				<LoginForm />
+				<Footer />
+			</div>
 		</div>
 	);
 }
