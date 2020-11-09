@@ -9,7 +9,7 @@ const Header = () => {
 	};
 
 	return (
-		<header className="px-4 py-3 bg-gray-800">
+		<header className="sm:flex sm:justify-between px-4 py-3 bg-gray-800">
 			<div className="flex items-center justify-between">
 				<img
 					src={logo}
@@ -19,22 +19,26 @@ const Header = () => {
 
 				<button
 					type="button"
-					className="hover:text-white"
+					className="hover:text-white sm:hidden"
 					onClick={() => toggleMenu()}
 				>
 					Menu
 				</button>
 			</div>
 
-			<nav className={open ? 'block' : 'hidden'}>
-				<ul>
+			<nav
+				className={
+					'sm:flex sm:items-center ' + (open ? 'block' : 'hidden')
+				}
+			>
+				<ul className="sm:flex">
 					<li className="font-semibold hover:bg-gray-400 rounded px-2">
 						<a href="#">Personal</a>
 					</li>
-					<li className="mt-2 font-semibold hover:bg-gray-400 rounded px-2">
+					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2">
 						<a href="#">Business</a>
 					</li>
-					<li className="mt-2 font-semibold hover:bg-gray-400 rounded px-2">
+					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2">
 						<a href="#">About</a>
 					</li>
 				</ul>
