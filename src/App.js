@@ -12,14 +12,16 @@ import './App.scss';
 function App() {
 	return (
 		<div className="App">
-			<div className="grid grid-rows-3">
+			<div className="grid auto-rows-auto">
 				<Header />
-				<main>
-					<Switch>
-						<Route path="/" component={LoginForm} exact />
-						<Route path="/about" component={About} />
-						<Route component={Error} />
-					</Switch>
+				<main className="flex items-center my-8">
+					<div className="flex items-center justify-center w-full">
+						<Switch>
+							<Route path="/" component={LoginForm} exact />
+							<Route path="/about" component={About} />
+							<Route component={Error} />
+						</Switch>
+					</div>
 				</main>
 				<Footer />
 			</div>
