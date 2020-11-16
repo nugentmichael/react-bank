@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from './logo.svg';
 
 const Header = () => {
@@ -33,13 +34,13 @@ const Header = () => {
 			>
 				<ul className="sm:flex">
 					<li className="font-semibold hover:bg-gray-400 rounded px-2">
-						<a href="#">Personal</a>
+						<Link to="/">Personal</Link>
 					</li>
 					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2">
-						<a href="#">Business</a>
+						<Link to="/">Business</Link>
 					</li>
 					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2">
-						<a href="#">About</a>
+						<Link to="/about">About</Link>
 					</li>
 				</ul>
 			</nav>
