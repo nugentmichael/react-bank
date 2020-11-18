@@ -14,7 +14,7 @@ function App() {
 		<div className="App">
 			<div className="grid auto-rows-auto">
 				<Header />
-				<main className="flex items-center my-8">
+				<main className="flex items-center">
 					<div className="flex items-center justify-center w-full">
 						<Switch>
 							<Route path="/" component={LoginForm} exact />
