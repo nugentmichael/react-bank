@@ -6,13 +6,18 @@ const LoginForm = () => {
 	const [passwordError, setPasswordError] = useState(false);
 
 	const formValidation = (e) => {
-		e.target.type === 'text' && e.target.value === ''
-			? setUserError(true)
-			: setUserError(false);
-		e.target.type === 'password' && e.target.value === ''
-			? setPasswordError(true)
-			: setPasswordError(false);
+		if (e.target.type === 'text') {
+			e.target.value === '' ? setUserError(true) : setUserError(false);
+		}
+
+		if (e.target.type === 'password') {
+			e.target.value === ''
+				? setPasswordError(true)
+				: setPasswordError(false);
+		}
+
 		!userError && !passwordError ? setValid(true) : setValid(false);
+		console.log(userError, passwordError, valid);
 	};
 
 	const handleSubmit = (e) => {
