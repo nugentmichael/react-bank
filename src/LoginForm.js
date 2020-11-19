@@ -56,14 +56,11 @@ const LoginForm = () => {
 							placeholder="Username"
 							onChange={formValidation}
 						/>
-						<p
-							className={
-								'text-red-500 text-xs italic ' +
-								(userError ? 'block' : 'hidden')
-							}
-						>
-							Please enter your username.
-						</p>
+						{userError ? (
+							<p className="text-red-500 text-xs italic">
+								Please enter your username.
+							</p>
+						) : null}
 					</div>
 					<div className="mb-6">
 						<label
@@ -82,14 +79,11 @@ const LoginForm = () => {
 							placeholder="******************"
 							onChange={formValidation}
 						/>
-						<p
-							className={
-								'text-red-500 text-xs italic error ' +
-								(passwordError ? 'block' : 'hidden')
-							}
-						>
-							Please enter your password.
-						</p>
+						{passwordError ? (
+							<p className="text-red-500 text-xs italic">
+								Please enter your password.
+							</p>
+						) : null}
 					</div>
 					<div className="flex items-center justify-between">
 						<button
