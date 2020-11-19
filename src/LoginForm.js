@@ -1,29 +1,46 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 
 const LoginForm = () => {
+	const firstRender = useRef(true);
 	const [valid, setValid] = useState(false);
 	const [userError, setUserError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
 
-	const formValidation = (e) => {
-		if (e.target.type === 'text') {
-			e.target.value === '' ? setUserError(true) : setUserError(false);
-		}
-
-		if (e.target.type === 'password') {
-			e.target.value === ''
-				? setPasswordError(true)
-				: setPasswordError(false);
+	useEffect(() => {
+		if (firstRender.current) {
+			firstRender.current = false;
+			return;
 		}
 
 		!userError && !passwordError ? setValid(true) : setValid(false);
-		console.log(userError, passwordError, valid);
+	}, [userError, passwordError]);
+
+	const formValidation = (e) => {
+		if (e.target.type === 'text') {
+			if (e.target.value === '') {
+				setUserError(true);
+				setValid(false);
+			} else {
+				setUserError(false);
+			}
+		}
+
+		if (e.target.type === 'password') {
+			if (e.target.value === '') {
+				setPasswordError(true);
+				setValid(false);
+			} else {
+				setPasswordError(false);
+			}
+		}
 	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log('Submit!');
 	};
+
+	console.log(valid);
 
 	return (
 		<div className="flex items-center justify-around w-full py-8">
