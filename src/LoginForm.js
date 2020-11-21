@@ -1,8 +1,10 @@
 import React, { useRef, useState, useEffect } from 'react';
 
 const LoginForm = () => {
-	const firstRender = useRef(true);
+	const firstRender = useRef(false);
 	const [valid, setValid] = useState(false);
+	const [username, setUsername] = useState(0);
+	const [password, setPassword] = useState(0);
 	const [userError, setUserError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
 
@@ -12,26 +14,22 @@ const LoginForm = () => {
 			return;
 		}
 
-		!userError && !passwordError ? setValid(true) : setValid(false);
-	}, [userError, passwordError]);
+		username && password ? setValid(true) : setValid(false);
+	}, [username, password]);
 
 	const formValidation = (e) => {
-		if (e.target.type === 'text') {
-			if (e.target.value === '') {
-				setUserError(true);
-				setValid(false);
-			} else {
-				setUserError(false);
-			}
+		// Username Field
+		if (e.target.id === 'username') {
+			e.target.value === '' ? setUserError(true) : setUserError(false);
+			setUsername(e.target.value.length);
 		}
 
-		if (e.target.type === 'password') {
-			if (e.target.value === '') {
-				setPasswordError(true);
-				setValid(false);
-			} else {
-				setPasswordError(false);
-			}
+		// Password Field
+		if (e.target.id === 'password') {
+			e.target.value === ''
+				? setPasswordError(true)
+				: setPasswordError(false);
+			setPassword(e.target.value.length);
 		}
 	};
 
@@ -39,8 +37,6 @@ const LoginForm = () => {
 		e.preventDefault();
 		console.log('Submit!');
 	};
-
-	console.log(valid);
 
 	return (
 		<div className="flex items-center justify-around w-full py-8">
@@ -109,6 +105,7 @@ const LoginForm = () => {
 								(!valid ? 'opacity-50 cursor-not-allowed' : '')
 							}
 							type="submit"
+							disabled={valid}
 						>
 							Sign In
 						</button>
