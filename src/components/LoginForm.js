@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const LoginForm = () => {
 	const [valid, setValid] = useState(false);
@@ -35,7 +35,7 @@ const LoginForm = () => {
 	return (
 		<form
 			className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-			autocomplete="off"
+			autoComplete="off"
 			onSubmit={handleSubmit}
 		>
 			<div className="mb-4">
