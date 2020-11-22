@@ -1,9 +1,9 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React from 'react';
 import LoginForm from './components/LoginForm';
 
 const Login = () => {
 	return (
-		<div className="flex items-center justify-around w-full py-8">
+		<div className="flex items-center justify-around py-8">
 			<div>
 				<h3>Welcome to React Bank!</h3>
 				<h4>
