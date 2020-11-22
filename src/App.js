@@ -1,11 +1,8 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 
 // Components
 import Header from './Header';
-import Login from './Login';
-import About from './About';
-import Error from './Error';
+import Main from './Main';
 import Footer from './Footer';
 import './App.scss';
 
@@ -14,13 +11,9 @@ function App() {
 		<div className="App">
 			<div className="grid auto-rows-auto">
 				<Header />
-				<main className="flex items-center">
-					<div className="flex items-center justify-center w-full">
-						<Switch>
-							<Route path="/" component={Login} exact />
-							<Route path="/about" component={About} />
-							<Route component={Error} />
-						</Switch>
+				<main className="flex items-center flex items-center justify-center">
+					<div className="w-full">
+						<Main />
 					</div>
 				</main>
 				<Footer />
