@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 
 const LoginForm = () => {
-	const firstRender = useRef(false);
 	const [valid, setValid] = useState(false);
 	const [username, setUsername] = useState(0);
 	const [password, setPassword] = useState(0);
@@ -9,11 +8,6 @@ const LoginForm = () => {
 	const [passwordError, setPasswordError] = useState(false);
 
 	useEffect(() => {
-		if (firstRender.current) {
-			firstRender.current = false;
-			return;
-		}
-
 		username && password ? setValid(true) : setValid(false);
 	}, [username, password]);
 
@@ -50,6 +44,7 @@ const LoginForm = () => {
 			<div className="w-full max-w-xs">
 				<form
 					className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+					autocomplete="off"
 					onSubmit={handleSubmit}
 				>
 					<div className="mb-4">
