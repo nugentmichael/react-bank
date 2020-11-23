@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import ErrorMessage from './ErrorMessage';
 
 const LoginForm = () => {
 	const [valid, setValid] = useState(false);
@@ -56,9 +57,7 @@ const LoginForm = () => {
 					onChange={formValidation}
 				/>
 				{userError ? (
-					<p className="text-red-500 text-xs italic">
-						Please enter your username.
-					</p>
+					<ErrorMessage message="Please enter your username." />
 				) : null}
 			</div>
 			<div className="mb-6">
@@ -79,9 +78,7 @@ const LoginForm = () => {
 					onChange={formValidation}
 				/>
 				{passwordError ? (
-					<p className="text-red-500 text-xs italic">
-						Please enter your password.
-					</p>
+					<ErrorMessage message="Please enter your password." />
 				) : null}
 			</div>
 			<div className="flex items-center justify-between">
