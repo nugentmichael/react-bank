@@ -88,16 +88,37 @@ const LoginForm = () => {
 						(!valid ? 'opacity-50 cursor-not-allowed' : '')
 					}
 					type="submit"
-					disabled={valid}
+					onClick={handleSubmit}
 				>
-					Sign In
+					Log In
 				</button>
-				<a
-					className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-					href="#"
-				>
-					Forgot Password?
-				</a>
+				<div className="relative">
+					<a
+						className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 tooltip"
+						href="#"
+					>
+						Forgot Password?
+					</a>
+					<div className="absolute -top-14 w-full opacity-0 transition-opacity tooltip-text">
+						<div className="relative">
+							<div className="bg-black text-white text-xs rounded py-1 px-4 right-0 bottom-full">
+								Type in any username or password.
+								<svg
+									className="absolute text-black h-2 w-full left-0 top-full"
+									x="0px"
+									y="0px"
+									viewBox="0 0 255 255"
+									xmlSpace="preserve"
+								>
+									<polygon
+										className="fill-current"
+										points="0,0 127.5,127.5 255,0"
+									/>
+								</svg>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</form>
 	);

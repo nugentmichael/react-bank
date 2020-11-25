@@ -21,3 +21,16 @@
 .App-link {
 	color: #61dafb;
 }
+
+// Tooltips
+.bottom-full {
+	bottom: 100%;
+}
+
+.top-full {
+	top: 100%;
+}
+
+.tooltip:hover + .tooltip-text {
+	opacity: 100%;
+}
