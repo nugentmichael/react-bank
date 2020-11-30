@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
+import Portal from '../layouts/Portal';
 
 const LoginForm = () => {
 	const [valid, setValid] = useState(false);
-	const [username, setUsername] = useState(0);
+	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState(0);
 	const [userError, setUserError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
 
 	const history = useHistory();
 
-	const routeChange = () => {
-		history.push('about');
+	const routeChange = (name) => {
+		history.push({ pathname: 'portal', username: name });
 	};
 
 	useEffect(() => {
@@ -23,7 +24,7 @@ const LoginForm = () => {
 		// Username Field
 		if (e.target.id === 'username') {
 			e.target.value === '' ? setUserError(true) : setUserError(false);
-			setUsername(e.target.value.length);
+			setUsername(e.target.value);
 		}
 
 		// Password Field
@@ -37,8 +38,7 @@ const LoginForm = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log('Submit!');
-		routeChange();
+		routeChange(username);
 	};
 
 	return (
