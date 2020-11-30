@@ -64,9 +64,9 @@ const LoginForm = () => {
 					placeholder="Username"
 					onChange={formValidation}
 				/>
-				{userError ? (
+				{userError && (
 					<ErrorMessage message="Please enter your username." />
-				) : null}
+				)}
 			</div>
 			<div className="mb-6">
 				<label
@@ -85,9 +85,9 @@ const LoginForm = () => {
 					placeholder="******************"
 					onChange={formValidation}
 				/>
-				{passwordError ? (
+				{passwordError && (
 					<ErrorMessage message="Please enter your password." />
-				) : null}
+				)}
 			</div>
 			<div className="flex items-center justify-between">
 				<button
