@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const Error = () => {
+const Error = (props) => {
+	useEffect(() => {
+		document.title = props.title || 'React Bank';
+	}, [props.title]);
+
 	return (
 		<div>
 			<h3>Oops! Page not found!</h3>

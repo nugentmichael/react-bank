@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LoginForm from '../components/LoginForm';
 
-const Login = () => {
+const Login = (props) => {
+	useEffect(() => {
+		document.title = props.title || 'React Bank';
+	}, [props.title]);
+
 	return (
 		<div className="flex items-center justify-around py-8">
 			<div>
