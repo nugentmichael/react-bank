@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
 
 const LoginForm = () => {
@@ -7,6 +8,12 @@ const LoginForm = () => {
 	const [password, setPassword] = useState(0);
 	const [userError, setUserError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
+
+	const history = useHistory();
+
+	const routeChange = () => {
+		history.push('about');
+	};
 
 	useEffect(() => {
 		username && password ? setValid(true) : setValid(false);
@@ -31,6 +38,7 @@ const LoginForm = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		console.log('Submit!');
+		routeChange();
 	};
 
 	return (
