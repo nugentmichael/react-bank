@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 const Portal = (props) => {
@@ -14,7 +14,7 @@ const Portal = (props) => {
 		<div className="flex items-start justify-center py-8">
 			<div className="w-1/2 text-left">
 				<div className="pt-8">
-					<h2 className="font-bold">Weclome{user && `, user`}!</h2>
+					<h2 className="font-bold">Weclome{user && `, ${user}`}!</h2>
 					<h3>You are now logged in to React Bank.</h3>
 				</div>
 				<hr className="my-8" />
