@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import ErrorMessage from './ErrorMessage';
-import Portal from '../layouts/Portal';
 
 const LoginForm = () => {
 	const [valid, setValid] = useState(false);
@@ -9,7 +8,6 @@ const LoginForm = () => {
 	const [password, setPassword] = useState(0);
 	const [userError, setUserError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
-
 	const history = useHistory();
 
 	const routeChange = (name) => {
