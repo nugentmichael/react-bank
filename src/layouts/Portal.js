@@ -5,6 +5,11 @@ const Portal = (props) => {
 	const history = useHistory();
 	const location = useLocation();
 	const user = location.username;
+	const [chequing, setChequing] = useState(10000.12);
+	const [savings, setSavings] = useState(1234.56);
+	const [creditCard, setCreditCard] = useState(2345.89);
+	const [rrsp, setRRSP] = useState(7891.52);
+	const [tfsa, setTFSA] = useState(1234.19);
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
@@ -33,7 +38,7 @@ const Portal = (props) => {
 							<div className="flex flex-col justify-center">
 								<p>
 									<span className="text-lg font-normal">
-										$10,000.12
+										${chequing.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -51,7 +56,7 @@ const Portal = (props) => {
 							<div className="flex flex-col justify-center">
 								<p>
 									<span className="text-lg font-normal">
-										$1,234.56
+										${savings.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -74,7 +79,7 @@ const Portal = (props) => {
 							<div className="flex flex-col justify-center">
 								<p>
 									<span className="text-lg font-normal">
-										$2,345.89
+										${creditCard.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -98,7 +103,7 @@ const Portal = (props) => {
 							<div className="flex flex-col justify-center">
 								<p>
 									<span className="text-lg font-normal">
-										$7,891.52
+										${rrsp.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -116,7 +121,7 @@ const Portal = (props) => {
 							<div className="flex flex-col justify-center">
 								<p>
 									<span className="text-lg font-normal">
-										$1,234.19
+										${tfsa.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
