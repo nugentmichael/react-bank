@@ -130,12 +130,54 @@ const Portal = (props) => {
 					</ul>
 				</div>
 			</div>
-			<div className="w-full max-w-xs py-8">
+			<div className="w-full max-w-xs p-8 text-left">
+				<h4 className="font-bold">Transfer:</h4>
+				<h5 className="font-semibold mt-3">From:</h5>
+				<select>
+					<option value="chequing">
+						Supreme No Limit Chequing: ${chequing.toLocaleString()}
+					</option>
+					<option value="savings">
+						High Interest Savings: ${savings.toLocaleString()}
+					</option>
+					<option value="creditcard">
+						Cash Back MasterCard: ${creditCard.toLocaleString()}
+					</option>
+					<option value="rrsp">RRSP: ${rrsp.toLocaleString()}</option>
+					<option value="tfsa">TFSA: ${tfsa.toLocaleString()}</option>
+				</select>
+				<h5 className="font-semibold mt-3">To:</h5>
+				<select>
+					<option value="chequing">
+						Supreme No Limit Chequing: ${chequing.toLocaleString()}
+					</option>
+					<option value="savings">
+						High Interest Savings: ${savings.toLocaleString()}
+					</option>
+					<option value="creditcard">
+						Cash Back MasterCard: ${creditCard.toLocaleString()}
+					</option>
+					<option value="rrsp">RRSP: ${rrsp.toLocaleString()}</option>
+					<option value="tfsa">TFSA: ${tfsa.toLocaleString()}</option>
+				</select>
+				<input
+					className="my-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+					id="transferAmount"
+					type="text"
+					placeholder="$0.00"
+				/>
+				<hr className="my-5" />
 				<h4 className="font-bold">Banking Needs:</h4>
 				<ul>
-					<li>Statements</li>
-					<li>Messages</li>
-					<li>Alerts</li>
+					<li>
+						<a href="#">Statements</a>
+					</li>
+					<li>
+						<a href="#">Messages</a>
+					</li>
+					<li>
+						<a href="#">Alerts</a>
+					</li>
 					<li className="my-5">
 						<button
 							className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
