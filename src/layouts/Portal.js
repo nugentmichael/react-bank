@@ -5,22 +5,51 @@ const Portal = (props) => {
 	const history = useHistory();
 	const location = useLocation();
 	const user = location.username;
-	const [chequing, setChequing] = useState(10000.12);
-	const [savings, setSavings] = useState(1234.56);
-	const [creditCard, setCreditCard] = useState(2345.89);
-	const [rrsp, setRRSP] = useState(7891.52);
-	const [tfsa, setTFSA] = useState(1234.19);
+	const [chequing, setChequing] = useState(0);
+	const [savings, setSavings] = useState(0);
+	const [creditCard, setCreditCard] = useState(0);
+	const [rrsp, setRRSP] = useState(0);
+	const [tfsa, setTFSA] = useState(0);
+
+	const accountAmounts = {
+		chequing: 10000.12,
+		savings: 1234.56,
+		creditCard: 2345.89,
+		rrsp: 7891.52,
+		tfsa: 1234.19,
+	};
+
+	const updateAccounts = () => {};
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
 
 		// Check to see if there is a Local Storage object containing the bank account details with their amounts, if not, create one.
-		!localStorage.getItem('bankAccounts') &&
-			localStorage.setItem(
-				'bankAccounts',
-				JSON.stringify({ chequing, savings, creditCard, rrsp, tfsa })
+		if (!localStorage.getItem('bankAccounts')) {
+			setChequing(10000.12);
+			setSavings(1234.56);
+			setCreditCard(2345.89);
+			setRRSP(7891.52);
+			setTFSA(1234.19);
+			// localStorage.setItem(
+			// 	'bankAccounts',
+			// 	JSON.stringify({ chequing, savings, creditCard, rrsp, tfsa })
+			// );
+			// console.log(JSON.parse(localStorage.getItem('bankAccounts')));
+			console.log(
+				JSON.stringify({
+					chequing,
+					savings,
+					creditCard,
+					rrsp,
+					tfsa,
+				})
 			);
+		}
 	}, [props.title, chequing, savings, creditCard, rrsp, tfsa]);
+
+	// const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
+	// console.log(bankAccounts);
 
 	return (
 		<div className="flex items-start justify-center py-8">
