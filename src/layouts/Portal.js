@@ -13,7 +13,14 @@ const Portal = (props) => {
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
-	}, [props.title]);
+
+		// Check to see if there is a Local Storage object containing the bank account details with their amounts, if not, create one.
+		!localStorage.getItem('bankAccounts') &&
+			localStorage.setItem(
+				'bankAccounts',
+				JSON.stringify({ chequing, savings, creditCard, rrsp, tfsa })
+			);
+	}, [props.title, chequing, savings, creditCard, rrsp, tfsa]);
 
 	return (
 		<div className="flex items-start justify-center py-8">
