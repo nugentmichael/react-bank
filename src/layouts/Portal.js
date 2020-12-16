@@ -31,25 +31,26 @@ const Portal = (props) => {
 			setCreditCard(2345.89);
 			setRRSP(7891.52);
 			setTFSA(1234.19);
-			// localStorage.setItem(
-			// 	'bankAccounts',
-			// 	JSON.stringify({ chequing, savings, creditCard, rrsp, tfsa })
-			// );
-			// console.log(JSON.parse(localStorage.getItem('bankAccounts')));
-			console.log(
-				JSON.stringify({
-					chequing,
-					savings,
-					creditCard,
-					rrsp,
-					tfsa,
-				})
+
+			localStorage.setItem(
+				'bankAccounts',
+				JSON.stringify({ chequing, savings, creditCard, rrsp, tfsa })
 			);
+			// console.log(JSON.parse(localStorage.getItem('bankAccounts')));
+			// console.log(
+			// 	JSON.stringify({
+			// 		chequing,
+			// 		savings,
+			// 		creditCard,
+			// 		rrsp,
+			// 		tfsa,
+			// 	})
+			// );
 		}
 	}, [props.title, chequing, savings, creditCard, rrsp, tfsa]);
 
-	// const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
-	// console.log(bankAccounts);
+	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
+	console.log({ ...bankAccounts });
 
 	return (
 		<div className="flex items-start justify-center py-8">
@@ -74,7 +75,12 @@ const Portal = (props) => {
 							<div className="flex flex-col justify-center">
 								<p>
 									<span className="text-lg font-normal">
-										${chequing.toLocaleString()}
+										$
+										{bankAccounts
+											? bankAccounts[
+													'chequing'
+											  ].toLocaleString()
+											: chequing.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -92,7 +98,12 @@ const Portal = (props) => {
 							<div className="flex flex-col justify-center">
 								<p>
 									<span className="text-lg font-normal">
-										${savings.toLocaleString()}
+										$
+										{bankAccounts
+											? bankAccounts[
+													'savings'
+											  ].toLocaleString()
+											: savings.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -115,7 +126,12 @@ const Portal = (props) => {
 							<div className="flex flex-col justify-center">
 								<p>
 									<span className="text-lg font-normal">
-										${creditCard.toLocaleString()}
+										$
+										{bankAccounts
+											? bankAccounts[
+													'creditCard'
+											  ].toLocaleString()
+											: creditCard.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -139,7 +155,12 @@ const Portal = (props) => {
 							<div className="flex flex-col justify-center">
 								<p>
 									<span className="text-lg font-normal">
-										${rrsp.toLocaleString()}
+										$
+										{bankAccounts
+											? bankAccounts[
+													'rrsp'
+											  ].toLocaleString()
+											: rrsp.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -157,7 +178,12 @@ const Portal = (props) => {
 							<div className="flex flex-col justify-center">
 								<p>
 									<span className="text-lg font-normal">
-										${tfsa.toLocaleString()}
+										$
+										{bankAccounts
+											? bankAccounts[
+													'tfsa'
+											  ].toLocaleString()
+											: tfsa.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -171,30 +197,68 @@ const Portal = (props) => {
 				<h5 className="font-semibold mt-3">From:</h5>
 				<select>
 					<option value="chequing">
-						Supreme No Limit Chequing: ${chequing.toLocaleString()}
+						Supreme No Limit Chequing: $
+						{bankAccounts
+							? bankAccounts['chequing'].toLocaleString()
+							: chequing.toLocaleString()}
 					</option>
 					<option value="savings">
-						High Interest Savings: ${savings.toLocaleString()}
+						High Interest Savings: $
+						{bankAccounts
+							? bankAccounts['savings'].toLocaleString()
+							: savings.toLocaleString()}
 					</option>
 					<option value="creditcard">
-						Cash Back MasterCard: ${creditCard.toLocaleString()}
+						Cash Back MasterCard: $
+						{bankAccounts
+							? bankAccounts['creditCard'].toLocaleString()
+							: creditCard.toLocaleString()}
 					</option>
-					<option value="rrsp">RRSP: ${rrsp.toLocaleString()}</option>
-					<option value="tfsa">TFSA: ${tfsa.toLocaleString()}</option>
+					<option value="rrsp">
+						RRSP: $
+						{bankAccounts
+							? bankAccounts['rrsp'].toLocaleString()
+							: rrsp.toLocaleString()}
+					</option>
+					<option value="tfsa">
+						TFSA: $
+						{bankAccounts
+							? bankAccounts['tfsa'].toLocaleString()
+							: tfsa.toLocaleString()}
+					</option>
 				</select>
 				<h5 className="font-semibold mt-3">To:</h5>
 				<select>
 					<option value="chequing">
-						Supreme No Limit Chequing: ${chequing.toLocaleString()}
+						Supreme No Limit Chequing: $
+						{bankAccounts
+							? bankAccounts['chequing'].toLocaleString()
+							: chequing.toLocaleString()}
 					</option>
 					<option value="savings">
-						High Interest Savings: ${savings.toLocaleString()}
+						High Interest Savings: $
+						{bankAccounts
+							? bankAccounts['savings'].toLocaleString()
+							: savings.toLocaleString()}
 					</option>
 					<option value="creditcard">
-						Cash Back MasterCard: ${creditCard.toLocaleString()}
+						Cash Back MasterCard: $
+						{bankAccounts
+							? bankAccounts['creditCard'].toLocaleString()
+							: creditCard.toLocaleString()}
 					</option>
-					<option value="rrsp">RRSP: ${rrsp.toLocaleString()}</option>
-					<option value="tfsa">TFSA: ${tfsa.toLocaleString()}</option>
+					<option value="rrsp">
+						RRSP: $
+						{bankAccounts
+							? bankAccounts['rrsp'].toLocaleString()
+							: rrsp.toLocaleString()}
+					</option>
+					<option value="tfsa">
+						TFSA: $
+						{bankAccounts
+							? bankAccounts['tfsa'].toLocaleString()
+							: tfsa.toLocaleString()}
+					</option>
 				</select>
 				<input
 					className="my-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
