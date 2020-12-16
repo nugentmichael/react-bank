@@ -108,7 +108,7 @@ const LoginForm = () => {
 					<div className="absolute -top-14 w-full opacity-0 transition-opacity tooltip-text">
 						<div className="relative">
 							<div className="bg-black text-white text-xs rounded py-1 px-4 right-0 bottom-full">
-								Type in any username or password.
+								Type in any username and password.
 								<svg
 									className="absolute text-black h-2 w-full left-0 top-full"
 									x="0px"
