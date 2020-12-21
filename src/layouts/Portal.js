@@ -166,7 +166,7 @@ const Portal = (props) => {
 					</ul>
 				</div>
 			</div>
-			<div className="w-full max-w-xs p-8 text-left">
+			<div className="w-auto max-w-xs p-8 text-left">
 				<h4 className="font-bold">Transfer:</h4>
 				<h5 className="font-semibold mt-3">From:</h5>
 				<select>
@@ -182,7 +182,7 @@ const Portal = (props) => {
 							? bankAccounts['savings'].toLocaleString()
 							: savings.toLocaleString()}
 					</option>
-					<option value="creditcard">
+					<option value="creditCard">
 						Cash Back MasterCard: $
 						{bankAccounts
 							? bankAccounts['creditCard'].toLocaleString()
@@ -215,7 +215,7 @@ const Portal = (props) => {
 							? bankAccounts['savings'].toLocaleString()
 							: savings.toLocaleString()}
 					</option>
-					<option value="creditcard">
+					<option value="creditCard">
 						Cash Back MasterCard: $
 						{bankAccounts
 							? bankAccounts['creditCard'].toLocaleString()
@@ -234,12 +234,20 @@ const Portal = (props) => {
 							: tfsa.toLocaleString()}
 					</option>
 				</select>
-				<input
-					className="my-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-					id="transferAmount"
-					type="text"
-					placeholder="$0.00"
-				/>
+				<div className="flex items-center">
+					<input
+						className="my-3 mr-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+						id="transferAmount"
+						type="text"
+						placeholder="$0.00"
+					/>
+					<button
+						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+						onClick={() => history.push('/')}
+					>
+						Transfer
+					</button>
+				</div>
 				<hr className="my-5" />
 				<h4 className="font-bold">Banking Needs:</h4>
 				<ul>
