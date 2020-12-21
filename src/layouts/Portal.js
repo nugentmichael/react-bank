@@ -13,14 +13,17 @@ const Portal = (props) => {
 
 	const transferFunds = () => {
 		const amount = document.getElementById('transferAmount').value;
-		const transferFrom = document.getElementById('transferFrom').value;
-		const transferTo = document.getElementById('transferTo').value;
+		const transferFrom = document.getElementById('transferFrom');
+		const transferFromAccount =
+			transferFrom.selectedOptions[0].dataset.account;
+		const transferTo = document.getElementById('transferTo');
+		const transferToAccount = transferTo.selectedOptions[0].dataset.account;
 		console.log(amount);
 		console.log(transferFrom);
 		console.log(transferTo);
 
 		alert(
-			`Are you sure you want to transfer $${amount} from ${transferFrom} to ${transferTo}`
+			`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
 		);
 
 		// if (localStorage.getItem('bankAccounts')) {
