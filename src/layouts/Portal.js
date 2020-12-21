@@ -11,6 +11,13 @@ const Portal = (props) => {
 	const [rrsp, setRRSP] = useState(7891.52);
 	const [tfsa, setTFSA] = useState(1234.19);
 
+	const transferFunds = () => {
+		const amount = document.getElementById('transferAmount');
+		const transferFrom = document.getElementById('transferFrom');
+		const transferTo = document.getElementById('transferTo');
+		console.log(transferFrom.value);
+	};
+
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
 
@@ -169,32 +176,55 @@ const Portal = (props) => {
 			<div className="w-auto max-w-xs p-8 text-left">
 				<h4 className="font-bold">Transfer:</h4>
 				<h5 className="font-semibold mt-3">From:</h5>
-				<select>
-					<option value="chequing">
+				<select name="transferFrom" id="transferFrom">
+					<option
+						value="chequing"
+						data-amount={
+							bankAccounts ? bankAccounts['chequing'] : chequing
+						}
+					>
 						Supreme No Limit Chequing: $
 						{bankAccounts
 							? bankAccounts['chequing'].toLocaleString()
 							: chequing.toLocaleString()}
 					</option>
-					<option value="savings">
+					<option
+						value="savings"
+						data-amount={
+							bankAccounts ? bankAccounts['savings'] : savings
+						}
+					>
 						High Interest Savings: $
 						{bankAccounts
 							? bankAccounts['savings'].toLocaleString()
 							: savings.toLocaleString()}
 					</option>
-					<option value="creditCard">
+					<option
+						value="creditCard"
+						data-amount={
+							bankAccounts
+								? bankAccounts['creditCard']
+								: creditCard
+						}
+					>
 						Cash Back MasterCard: $
 						{bankAccounts
 							? bankAccounts['creditCard'].toLocaleString()
 							: creditCard.toLocaleString()}
 					</option>
-					<option value="rrsp">
+					<option
+						value="rrsp"
+						data-amount={bankAccounts ? bankAccounts['rrsp'] : rrsp}
+					>
 						RRSP: $
 						{bankAccounts
 							? bankAccounts['rrsp'].toLocaleString()
 							: rrsp.toLocaleString()}
 					</option>
-					<option value="tfsa">
+					<option
+						value="tfsa"
+						data-amount={bankAccounts ? bankAccounts['tfsa'] : tfsa}
+					>
 						TFSA: $
 						{bankAccounts
 							? bankAccounts['tfsa'].toLocaleString()
@@ -202,32 +232,55 @@ const Portal = (props) => {
 					</option>
 				</select>
 				<h5 className="font-semibold mt-3">To:</h5>
-				<select>
-					<option value="chequing">
+				<select name="transferTo" id="transferTo">
+					<option
+						value="chequing"
+						data-amount={
+							bankAccounts ? bankAccounts['chequing'] : chequing
+						}
+					>
 						Supreme No Limit Chequing: $
 						{bankAccounts
 							? bankAccounts['chequing'].toLocaleString()
 							: chequing.toLocaleString()}
 					</option>
-					<option value="savings">
+					<option
+						value="savings"
+						data-amount={
+							bankAccounts ? bankAccounts['savings'] : savings
+						}
+					>
 						High Interest Savings: $
 						{bankAccounts
 							? bankAccounts['savings'].toLocaleString()
 							: savings.toLocaleString()}
 					</option>
-					<option value="creditCard">
+					<option
+						value="creditCard"
+						data-amount={
+							bankAccounts
+								? bankAccounts['creditCard']
+								: creditCard
+						}
+					>
 						Cash Back MasterCard: $
 						{bankAccounts
 							? bankAccounts['creditCard'].toLocaleString()
 							: creditCard.toLocaleString()}
 					</option>
-					<option value="rrsp">
+					<option
+						value="rrsp"
+						data-amount={bankAccounts ? bankAccounts['rrsp'] : rrsp}
+					>
 						RRSP: $
 						{bankAccounts
 							? bankAccounts['rrsp'].toLocaleString()
 							: rrsp.toLocaleString()}
 					</option>
-					<option value="tfsa">
+					<option
+						value="tfsa"
+						data-amount={bankAccounts ? bankAccounts['tfsa'] : tfsa}
+					>
 						TFSA: $
 						{bankAccounts
 							? bankAccounts['tfsa'].toLocaleString()
@@ -243,7 +296,7 @@ const Portal = (props) => {
 					/>
 					<button
 						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-						onClick={() => history.push('/')}
+						onClick={transferFunds}
 					>
 						Transfer
 					</button>
