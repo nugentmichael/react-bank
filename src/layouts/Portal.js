@@ -12,10 +12,23 @@ const Portal = (props) => {
 	const [tfsa, setTFSA] = useState(1234.19);
 
 	const transferFunds = () => {
-		const amount = document.getElementById('transferAmount');
-		const transferFrom = document.getElementById('transferFrom');
-		const transferTo = document.getElementById('transferTo');
-		console.log(transferFrom.value);
+		const amount = document.getElementById('transferAmount').value;
+		const transferFrom = document.getElementById('transferFrom').value;
+		const transferTo = document.getElementById('transferTo').value;
+		console.log(amount);
+		console.log(transferFrom);
+		console.log(transferTo);
+
+		alert(
+			`Are you sure you want to transfer $${amount} from ${transferFrom} to ${transferTo}`
+		);
+
+		// if (localStorage.getItem('bankAccounts')) {
+		// 	localStorage.setItem(
+		// 		'bankAccounts',
+		// 		JSON.stringify({ chequing, savings, creditCard, rrsp, tfsa })
+		// 	);
+		// }
 	};
 
 	useEffect(() => {
@@ -179,6 +192,7 @@ const Portal = (props) => {
 				<select name="transferFrom" id="transferFrom">
 					<option
 						value="chequing"
+						data-account="Supreme No Limit Chequing"
 						data-amount={
 							bankAccounts ? bankAccounts['chequing'] : chequing
 						}
@@ -190,6 +204,7 @@ const Portal = (props) => {
 					</option>
 					<option
 						value="savings"
+						data-account="High Interest Savings"
 						data-amount={
 							bankAccounts ? bankAccounts['savings'] : savings
 						}
@@ -201,6 +216,7 @@ const Portal = (props) => {
 					</option>
 					<option
 						value="creditCard"
+						data-account="Cash Back MasterCard"
 						data-amount={
 							bankAccounts
 								? bankAccounts['creditCard']
@@ -214,6 +230,7 @@ const Portal = (props) => {
 					</option>
 					<option
 						value="rrsp"
+						data-account="RRSP"
 						data-amount={bankAccounts ? bankAccounts['rrsp'] : rrsp}
 					>
 						RRSP: $
@@ -223,6 +240,7 @@ const Portal = (props) => {
 					</option>
 					<option
 						value="tfsa"
+						data-account="TFSA"
 						data-amount={bankAccounts ? bankAccounts['tfsa'] : tfsa}
 					>
 						TFSA: $
@@ -235,6 +253,7 @@ const Portal = (props) => {
 				<select name="transferTo" id="transferTo">
 					<option
 						value="chequing"
+						data-account="Supreme No Limit Chequing"
 						data-amount={
 							bankAccounts ? bankAccounts['chequing'] : chequing
 						}
@@ -246,6 +265,7 @@ const Portal = (props) => {
 					</option>
 					<option
 						value="savings"
+						data-account="High Interest Savings"
 						data-amount={
 							bankAccounts ? bankAccounts['savings'] : savings
 						}
@@ -257,6 +277,7 @@ const Portal = (props) => {
 					</option>
 					<option
 						value="creditCard"
+						data-account="Cash Back MasterCard"
 						data-amount={
 							bankAccounts
 								? bankAccounts['creditCard']
@@ -270,6 +291,7 @@ const Portal = (props) => {
 					</option>
 					<option
 						value="rrsp"
+						data-account="RRSP"
 						data-amount={bankAccounts ? bankAccounts['rrsp'] : rrsp}
 					>
 						RRSP: $
@@ -279,6 +301,7 @@ const Portal = (props) => {
 					</option>
 					<option
 						value="tfsa"
+						data-account="TFSA"
 						data-amount={bankAccounts ? bankAccounts['tfsa'] : tfsa}
 					>
 						TFSA: $
