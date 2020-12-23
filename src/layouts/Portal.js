@@ -5,6 +5,7 @@ const Portal = (props) => {
 	const history = useHistory();
 	const location = useLocation();
 	const user = location.username;
+	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
 	const [chequing, setChequing] = useState(10000.12);
 	const [savings, setSavings] = useState(1234.56);
 	const [creditCard, setCreditCard] = useState(2345.89);
@@ -60,24 +61,7 @@ const Portal = (props) => {
 				JSON.stringify({ chequing, savings, creditCard, rrsp, tfsa })
 			);
 		}
-
-		transferFrom !== transferTo
-			? setValidTransfer(true)
-			: setValidTransfer(false);
-	}, [
-		props.title,
-		chequing,
-		savings,
-		creditCard,
-		rrsp,
-		tfsa,
-		transferFrom,
-		transferTo,
-		validTransfer,
-	]);
-
-	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
-	console.log({ ...bankAccounts });
+	}, [props.title, chequing, savings, creditCard, rrsp, tfsa]);
 
 	return (
 		<div className="flex items-start justify-center py-8">
@@ -235,6 +219,7 @@ const Portal = (props) => {
 						data-amount={
 							bankAccounts ? bankAccounts['chequing'] : chequing
 						}
+						disabled={transferFrom === 'chequing'}
 					>
 						Supreme No Limit Chequing: $
 						{bankAccounts
@@ -247,6 +232,7 @@ const Portal = (props) => {
 						data-amount={
 							bankAccounts ? bankAccounts['savings'] : savings
 						}
+						disabled={transferFrom === 'savings'}
 					>
 						High Interest Savings: $
 						{bankAccounts
@@ -261,6 +247,7 @@ const Portal = (props) => {
 								? bankAccounts['creditCard']
 								: creditCard
 						}
+						disabled={transferFrom === 'creditCard'}
 					>
 						Cash Back MasterCard: $
 						{bankAccounts
@@ -271,6 +258,7 @@ const Portal = (props) => {
 						value="rrsp"
 						data-account="RRSP"
 						data-amount={bankAccounts ? bankAccounts['rrsp'] : rrsp}
+						disabled={transferFrom === 'rrsp'}
 					>
 						RRSP: $
 						{bankAccounts
@@ -281,6 +269,7 @@ const Portal = (props) => {
 						value="tfsa"
 						data-account="TFSA"
 						data-amount={bankAccounts ? bankAccounts['tfsa'] : tfsa}
+						disabled={transferFrom === 'tfsa'}
 					>
 						TFSA: $
 						{bankAccounts
@@ -302,7 +291,7 @@ const Portal = (props) => {
 						data-amount={
 							bankAccounts ? bankAccounts['chequing'] : chequing
 						}
-						disabled={transferTo === transferFrom}
+						disabled={transferFrom === 'chequing'}
 					>
 						Supreme No Limit Chequing: $
 						{bankAccounts
@@ -315,7 +304,7 @@ const Portal = (props) => {
 						data-amount={
 							bankAccounts ? bankAccounts['savings'] : savings
 						}
-						disabled={transferTo === transferFrom}
+						disabled={transferFrom === 'savings'}
 					>
 						High Interest Savings: $
 						{bankAccounts
@@ -330,6 +319,7 @@ const Portal = (props) => {
 								? bankAccounts['creditCard']
 								: creditCard
 						}
+						disabled={transferFrom === 'creditCard'}
 					>
 						Cash Back MasterCard: $
 						{bankAccounts
@@ -340,6 +330,7 @@ const Portal = (props) => {
 						value="rrsp"
 						data-account="RRSP"
 						data-amount={bankAccounts ? bankAccounts['rrsp'] : rrsp}
+						disabled={transferFrom === 'rrsp'}
 					>
 						RRSP: $
 						{bankAccounts
@@ -350,6 +341,7 @@ const Portal = (props) => {
 						value="tfsa"
 						data-account="TFSA"
 						data-amount={bankAccounts ? bankAccounts['tfsa'] : tfsa}
+						disabled={transferFrom === 'tfsa'}
 					>
 						TFSA: $
 						{bankAccounts
