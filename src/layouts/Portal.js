@@ -10,6 +10,13 @@ const Portal = (props) => {
 	const [creditCard, setCreditCard] = useState(2345.89);
 	const [rrsp, setRRSP] = useState(7891.52);
 	const [tfsa, setTFSA] = useState(1234.19);
+	const [validTransfer, setValidTransfer] = useState(false);
+
+	const transferValidation = (e) => {
+		e.target.value !== ''
+			? setValidTransfer(true)
+			: setValidTransfer(false);
+	};
 
 	const transferFunds = () => {
 		const amount = document.getElementById('transferAmount').value;
@@ -319,9 +326,13 @@ const Portal = (props) => {
 						id="transferAmount"
 						type="text"
 						placeholder="$0.00"
+						onChange={transferValidation}
 					/>
 					<button
-						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+						className={
+							'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' +
+							(!validTransfer && ' opacity-50 cursor-not-allowed')
+						}
 						onClick={transferFunds}
 					>
 						Transfer
