@@ -12,11 +12,15 @@ const Portal = (props) => {
 	const [tfsa, setTFSA] = useState(1234.19);
 	const [validTransfer, setValidTransfer] = useState(false);
 	const [amount, setAmount] = useState(0);
-	const [transferFrom, setTransferFrom] = useState('chequing');
-	const [transferTo, setTransferTo] = useState('chequing');
+	const [transferFrom, setTransferFrom] = useState();
+	const [transferTo, setTransferTo] = useState();
 
 	const transferValidation = (e) => {
-		if (e.target.value !== '' && !isNaN(e.target.value)) {
+		if (
+			e.target.value !== '' &&
+			!isNaN(e.target.value) &&
+			transferFrom !== transferTo
+		) {
 			setAmount(e.target.value);
 			setValidTransfer(true);
 		} else {
@@ -32,9 +36,11 @@ const Portal = (props) => {
 		// const transferTo = document.getElementById('transferTo');
 		// const transferToAccount = transferTo.selectedOptions[0].dataset.account;
 
-		alert(
-			`Are you sure you want to transfer $${amount} from your ${transferFrom} account to ${transferTo} account?`
-		);
+		if (validTransfer) {
+			alert(
+				`Are you sure you want to transfer $${amount} from your ${transferFrom} account to ${transferTo} account?`
+			);
+		}
 
 		// if (localStorage.getItem('bankAccounts')) {
 		// 	localStorage.setItem(
@@ -54,7 +60,21 @@ const Portal = (props) => {
 				JSON.stringify({ chequing, savings, creditCard, rrsp, tfsa })
 			);
 		}
-	}, [props.title, chequing, savings, creditCard, rrsp, tfsa]);
+
+		transferFrom !== transferTo
+			? setValidTransfer(true)
+			: setValidTransfer(false);
+	}, [
+		props.title,
+		chequing,
+		savings,
+		creditCard,
+		rrsp,
+		tfsa,
+		transferFrom,
+		transferTo,
+		validTransfer,
+	]);
 
 	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
 	console.log({ ...bankAccounts });
@@ -206,6 +226,9 @@ const Portal = (props) => {
 					value={transferFrom}
 					onChange={(e) => setTransferFrom(e.target.value)}
 				>
+					<option defaultValue hidden>
+						&mdash; Select Account &mdash;
+					</option>
 					<option
 						value="chequing"
 						data-account="Supreme No Limit Chequing"
@@ -270,12 +293,16 @@ const Portal = (props) => {
 					value={transferTo}
 					onChange={(e) => setTransferTo(e.target.value)}
 				>
+					<option defaultValue hidden>
+						&mdash; Select Account &mdash;
+					</option>
 					<option
 						value="chequing"
 						data-account="Supreme No Limit Chequing"
 						data-amount={
 							bankAccounts ? bankAccounts['chequing'] : chequing
 						}
+						disabled={transferTo === transferFrom}
 					>
 						Supreme No Limit Chequing: $
 						{bankAccounts
@@ -288,6 +315,7 @@ const Portal = (props) => {
 						data-amount={
 							bankAccounts ? bankAccounts['savings'] : savings
 						}
+						disabled={transferTo === transferFrom}
 					>
 						High Interest Savings: $
 						{bankAccounts
