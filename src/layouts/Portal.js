@@ -12,6 +12,8 @@ const Portal = (props) => {
 	const [tfsa, setTFSA] = useState(1234.19);
 	const [validTransfer, setValidTransfer] = useState(false);
 	const [amount, setAmount] = useState(0);
+	const [transferFrom, setTransferFrom] = useState('chequing');
+	const [transferTo, setTransferTo] = useState('chequing');
 
 	const transferValidation = (e) => {
 		if (e.target.value !== '' && !isNaN(e.target.value)) {
@@ -24,14 +26,14 @@ const Portal = (props) => {
 
 	const transferFunds = () => {
 		// const amount = document.getElementById('transferAmount').value;
-		const transferFrom = document.getElementById('transferFrom');
-		const transferFromAccount =
-			transferFrom.selectedOptions[0].dataset.account;
-		const transferTo = document.getElementById('transferTo');
-		const transferToAccount = transferTo.selectedOptions[0].dataset.account;
+		// const transferFrom = document.getElementById('transferFrom');
+		// const transferFromAccount =
+		// 	transferFrom.selectedOptions[0].dataset.account;
+		// const transferTo = document.getElementById('transferTo');
+		// const transferToAccount = transferTo.selectedOptions[0].dataset.account;
 
 		alert(
-			`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
+			`Are you sure you want to transfer $${amount} from your ${transferFrom} account to ${transferTo} account?`
 		);
 
 		// if (localStorage.getItem('bankAccounts')) {
@@ -200,7 +202,10 @@ const Portal = (props) => {
 			<div className="w-auto max-w-xs p-8 text-left">
 				<h4 className="font-bold">Transfer:</h4>
 				<h5 className="font-semibold mt-3">From:</h5>
-				<select name="transferFrom" id="transferFrom">
+				<select
+					value={transferFrom}
+					onChange={(e) => setTransferFrom(e.target.value)}
+				>
 					<option
 						value="chequing"
 						data-account="Supreme No Limit Chequing"
@@ -261,7 +266,10 @@ const Portal = (props) => {
 					</option>
 				</select>
 				<h5 className="font-semibold mt-3">To:</h5>
-				<select name="transferTo" id="transferTo">
+				<select
+					value={transferTo}
+					onChange={(e) => setTransferTo(e.target.value)}
+				>
 					<option
 						value="chequing"
 						data-account="Supreme No Limit Chequing"
