@@ -11,23 +11,24 @@ const Portal = (props) => {
 	const [rrsp, setRRSP] = useState(7891.52);
 	const [tfsa, setTFSA] = useState(1234.19);
 	const [validTransfer, setValidTransfer] = useState(false);
+	const [amount, setAmount] = useState(0);
 
 	const transferValidation = (e) => {
-		e.target.value !== ''
-			? setValidTransfer(true)
-			: setValidTransfer(false);
+		if (e.target.value !== '' && !isNaN(e.target.value)) {
+			setAmount(e.target.value);
+			setValidTransfer(true);
+		} else {
+			setValidTransfer(false);
+		}
 	};
 
 	const transferFunds = () => {
-		const amount = document.getElementById('transferAmount').value;
+		// const amount = document.getElementById('transferAmount').value;
 		const transferFrom = document.getElementById('transferFrom');
 		const transferFromAccount =
 			transferFrom.selectedOptions[0].dataset.account;
 		const transferTo = document.getElementById('transferTo');
 		const transferToAccount = transferTo.selectedOptions[0].dataset.account;
-		console.log(amount);
-		console.log(transferFrom);
-		console.log(transferTo);
 
 		alert(
 			`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
