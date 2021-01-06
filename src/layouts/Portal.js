@@ -32,17 +32,42 @@ const Portal = (props) => {
 	};
 
 	const transferFunds = () => {
-		// const amount = document.getElementById('transferAmount').value;
-		// const transferFrom = document.getElementById('transferFrom');
-		// const transferFromAccount =
-		// 	transferFrom.selectedOptions[0].dataset.account;
-		// const transferTo = document.getElementById('transferTo');
-		// const transferToAccount = transferTo.selectedOptions[0].dataset.account;
-
 		if (validTransfer) {
-			alert(
+			// Prompt the user to confirm the transfer amount
+			console.log(
 				`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
 			);
+
+			// Subtract the amount from the selected From account and add it to the selected To account
+			if (localStorage.getItem('bankAccounts')) {
+				let accounts = JSON.parse(localStorage.getItem('bankAccounts'));
+				accounts[transferFrom] = Number(
+					accounts[transferFrom] - amount
+				);
+				accounts[transferTo] = Number(
+					(accounts[transferTo] += +amount)
+				);
+
+				console.log(accounts);
+
+				localStorage.setItem(
+					'bankAccounts',
+					JSON.stringify({
+						chequing,
+						savings,
+						creditCard,
+						rrsp,
+						tfsa,
+					})
+				);
+
+				// console.log(JSON.parse(localStorage.getItem('bankAccounts')));
+				// console.log(accounts[transferFrom], accounts[transferTo]);
+				// console.log(accounts[transferTo] + +amount);
+			}
+
+			// Update Local Storage item
+			// Reload the component using the useEffect hook to display the new amounts on the page
 		}
 
 		// if (localStorage.getItem('bankAccounts')) {
@@ -64,6 +89,8 @@ const Portal = (props) => {
 			);
 		}
 	}, [props.title, chequing, savings, creditCard, rrsp, tfsa]);
+
+	// console.log(JSON.parse(localStorage.getItem('bankAccounts'))['chequing']);
 
 	return (
 		<div className="flex items-start justify-center py-8">
