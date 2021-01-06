@@ -15,6 +15,8 @@ const Portal = (props) => {
 	const [amount, setAmount] = useState(0);
 	const [transferFrom, setTransferFrom] = useState();
 	const [transferTo, setTransferTo] = useState();
+	const [transferFromAccount, setTransferFromAccount] = useState();
+	const [transferToAccount, setTransferToAccount] = useState();
 
 	const transferValidation = (e) => {
 		if (
@@ -39,7 +41,7 @@ const Portal = (props) => {
 
 		if (validTransfer) {
 			alert(
-				`Are you sure you want to transfer $${amount} from your ${transferFrom} account to ${transferTo} account?`
+				`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
 			);
 		}
 
@@ -208,7 +210,13 @@ const Portal = (props) => {
 				<h5 className="font-semibold mt-3">From:</h5>
 				<select
 					value={transferFrom}
-					onChange={(e) => setTransferFrom(e.target.value)}
+					onChange={(e) => {
+						setTransferFrom(e.target.value);
+						setTransferFromAccount(
+							e.target.options[e.target.selectedIndex].dataset
+								.account
+						);
+					}}
 				>
 					<option defaultValue hidden>
 						&mdash; Select Account &mdash;
@@ -280,7 +288,13 @@ const Portal = (props) => {
 				<h5 className="font-semibold mt-3">To:</h5>
 				<select
 					value={transferTo}
-					onChange={(e) => setTransferTo(e.target.value)}
+					onChange={(e) => {
+						setTransferTo(e.target.value);
+						setTransferToAccount(
+							e.target.options[e.target.selectedIndex].dataset
+								.account
+						);
+					}}
 				>
 					<option defaultValue hidden>
 						&mdash; Select Account &mdash;
