@@ -42,10 +42,10 @@ const Portal = (props) => {
 			if (localStorage.getItem('bankAccounts')) {
 				bankAccounts[transferFrom] = Number(
 					bankAccounts[transferFrom] - amount
-				);
+				).toFixed(2);
 				bankAccounts[transferTo] = Number(
 					(bankAccounts[transferTo] += +amount)
-				);
+				).toFixed(2);
 
 				// Update Local Storage item
 				localStorage.setItem(
