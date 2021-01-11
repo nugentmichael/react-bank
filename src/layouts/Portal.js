@@ -44,8 +44,8 @@ const Portal = (props) => {
 					bankAccounts[transferFrom] - amount
 				).toFixed(2);
 				bankAccounts[transferTo] = Number(
-					(bankAccounts[transferTo] += +amount)
-				).toFixed(2);
+					(bankAccounts[transferTo] += +amount).toFixed(2)
+				);
 
 				// Update Local Storage item
 				localStorage.setItem(
@@ -55,6 +55,7 @@ const Portal = (props) => {
 			}
 
 			// Reload the component using the useEffect hook to display the new amounts on the page
+			setValidTransfer(false);
 		}
 	};
 
