@@ -48,34 +48,12 @@ const Portal = (props) => {
 					(accounts[transferTo] += +amount)
 				);
 
-				console.log(accounts);
-
-				localStorage.setItem(
-					'bankAccounts',
-					JSON.stringify({
-						chequing,
-						savings,
-						creditCard,
-						rrsp,
-						tfsa,
-					})
-				);
-
-				// console.log(JSON.parse(localStorage.getItem('bankAccounts')));
-				// console.log(accounts[transferFrom], accounts[transferTo]);
-				// console.log(accounts[transferTo] + +amount);
+				// Update Local Storage item
+				localStorage.setItem('bankAccounts', JSON.stringify(accounts));
 			}
 
-			// Update Local Storage item
 			// Reload the component using the useEffect hook to display the new amounts on the page
 		}
-
-		// if (localStorage.getItem('bankAccounts')) {
-		// 	localStorage.setItem(
-		// 		'bankAccounts',
-		// 		JSON.stringify({ chequing, savings, creditCard, rrsp, tfsa })
-		// 	);
-		// }
 	};
 
 	useEffect(() => {
