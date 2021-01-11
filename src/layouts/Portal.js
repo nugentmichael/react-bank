@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 const Portal = (props) => {
@@ -6,11 +6,11 @@ const Portal = (props) => {
 	const location = useLocation();
 	const user = location.username;
 	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
-	const [chequing, setChequing] = useState(10000.12);
-	const [savings, setSavings] = useState(1234.56);
-	const [creditCard, setCreditCard] = useState(2345.89);
-	const [rrsp, setRRSP] = useState(7891.52);
-	const [tfsa, setTFSA] = useState(1234.19);
+	const chequing = useRef(10000.12);
+	const savings = useRef(1234.56);
+	const creditCard = useRef(2345.89);
+	const rrsp = useRef(7891.52);
+	const tfsa = useRef(1234.19);
 	const [validTransfer, setValidTransfer] = useState(false);
 	const [amount, setAmount] = useState(0);
 	const [transferFrom, setTransferFrom] = useState();
@@ -60,12 +60,19 @@ const Portal = (props) => {
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
+		console.log(chequing.current);
 
 		// Check to see if there is a Local Storage object containing the bank account details with their amounts, if not, create one.
 		if (!localStorage.getItem('bankAccounts')) {
 			localStorage.setItem(
 				'bankAccounts',
-				JSON.stringify({ chequing, savings, creditCard, rrsp, tfsa })
+				JSON.stringify({
+					chequing: chequing.current,
+					savings: savings.current,
+					creditCard: creditCard.current,
+					rrsp: rrsp.current,
+					tfsa: tfsa.current,
+				})
 			);
 		}
 	}, [props.title, chequing, savings, creditCard, rrsp, tfsa]);
@@ -100,7 +107,7 @@ const Portal = (props) => {
 											? bankAccounts[
 													'chequing'
 											  ].toLocaleString()
-											: chequing.toLocaleString()}
+											: chequing.current.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -123,7 +130,7 @@ const Portal = (props) => {
 											? bankAccounts[
 													'savings'
 											  ].toLocaleString()
-											: savings.toLocaleString()}
+											: savings.current.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -151,7 +158,7 @@ const Portal = (props) => {
 											? bankAccounts[
 													'creditCard'
 											  ].toLocaleString()
-											: creditCard.toLocaleString()}
+											: creditCard.current.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -180,7 +187,7 @@ const Portal = (props) => {
 											? bankAccounts[
 													'rrsp'
 											  ].toLocaleString()
-											: rrsp.toLocaleString()}
+											: rrsp.current.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -203,7 +210,7 @@ const Portal = (props) => {
 											? bankAccounts[
 													'tfsa'
 											  ].toLocaleString()
-											: tfsa.toLocaleString()}
+											: tfsa.current.toLocaleString()}
 										<sup className="text-xs">CAD</sup>
 									</span>
 								</p>
@@ -232,27 +239,31 @@ const Portal = (props) => {
 						value="chequing"
 						data-account="Supreme No Limit Chequing"
 						data-amount={
-							bankAccounts ? bankAccounts['chequing'] : chequing
+							bankAccounts
+								? bankAccounts['chequing']
+								: chequing.current
 						}
 						disabled={transferFrom === 'chequing'}
 					>
 						Supreme No Limit Chequing: $
 						{bankAccounts
 							? bankAccounts['chequing'].toLocaleString()
-							: chequing.toLocaleString()}
+							: chequing.current.toLocaleString()}
 					</option>
 					<option
 						value="savings"
 						data-account="High Interest Savings"
 						data-amount={
-							bankAccounts ? bankAccounts['savings'] : savings
+							bankAccounts
+								? bankAccounts['savings']
+								: savings.current
 						}
 						disabled={transferFrom === 'savings'}
 					>
 						High Interest Savings: $
 						{bankAccounts
 							? bankAccounts['savings'].toLocaleString()
-							: savings.toLocaleString()}
+							: savings.current.toLocaleString()}
 					</option>
 					<option
 						value="creditCard"
@@ -260,36 +271,40 @@ const Portal = (props) => {
 						data-amount={
 							bankAccounts
 								? bankAccounts['creditCard']
-								: creditCard
+								: creditCard.current
 						}
 						disabled={transferFrom === 'creditCard'}
 					>
 						Cash Back MasterCard: $
 						{bankAccounts
 							? bankAccounts['creditCard'].toLocaleString()
-							: creditCard.toLocaleString()}
+							: creditCard.current.toLocaleString()}
 					</option>
 					<option
 						value="rrsp"
 						data-account="RRSP"
-						data-amount={bankAccounts ? bankAccounts['rrsp'] : rrsp}
+						data-amount={
+							bankAccounts ? bankAccounts['rrsp'] : rrsp.current
+						}
 						disabled={transferFrom === 'rrsp'}
 					>
 						RRSP: $
 						{bankAccounts
 							? bankAccounts['rrsp'].toLocaleString()
-							: rrsp.toLocaleString()}
+							: rrsp.current.toLocaleString()}
 					</option>
 					<option
 						value="tfsa"
 						data-account="TFSA"
-						data-amount={bankAccounts ? bankAccounts['tfsa'] : tfsa}
+						data-amount={
+							bankAccounts ? bankAccounts['tfsa'] : tfsa.current
+						}
 						disabled={transferFrom === 'tfsa'}
 					>
 						TFSA: $
 						{bankAccounts
 							? bankAccounts['tfsa'].toLocaleString()
-							: tfsa.toLocaleString()}
+							: tfsa.current.toLocaleString()}
 					</option>
 				</select>
 				<h5 className="font-semibold mt-3">To:</h5>
@@ -310,27 +325,31 @@ const Portal = (props) => {
 						value="chequing"
 						data-account="Supreme No Limit Chequing"
 						data-amount={
-							bankAccounts ? bankAccounts['chequing'] : chequing
+							bankAccounts
+								? bankAccounts['chequing']
+								: chequing.current
 						}
 						disabled={transferFrom === 'chequing'}
 					>
 						Supreme No Limit Chequing: $
 						{bankAccounts
 							? bankAccounts['chequing'].toLocaleString()
-							: chequing.toLocaleString()}
+							: chequing.current.toLocaleString()}
 					</option>
 					<option
 						value="savings"
 						data-account="High Interest Savings"
 						data-amount={
-							bankAccounts ? bankAccounts['savings'] : savings
+							bankAccounts
+								? bankAccounts['savings']
+								: savings.current
 						}
 						disabled={transferFrom === 'savings'}
 					>
 						High Interest Savings: $
 						{bankAccounts
 							? bankAccounts['savings'].toLocaleString()
-							: savings.toLocaleString()}
+							: savings.current.toLocaleString()}
 					</option>
 					<option
 						value="creditCard"
@@ -338,36 +357,40 @@ const Portal = (props) => {
 						data-amount={
 							bankAccounts
 								? bankAccounts['creditCard']
-								: creditCard
+								: creditCard.current
 						}
 						disabled={transferFrom === 'creditCard'}
 					>
 						Cash Back MasterCard: $
 						{bankAccounts
 							? bankAccounts['creditCard'].toLocaleString()
-							: creditCard.toLocaleString()}
+							: creditCard.current.toLocaleString()}
 					</option>
 					<option
 						value="rrsp"
 						data-account="RRSP"
-						data-amount={bankAccounts ? bankAccounts['rrsp'] : rrsp}
+						data-amount={
+							bankAccounts ? bankAccounts['rrsp'] : rrsp.current
+						}
 						disabled={transferFrom === 'rrsp'}
 					>
 						RRSP: $
 						{bankAccounts
 							? bankAccounts['rrsp'].toLocaleString()
-							: rrsp.toLocaleString()}
+							: rrsp.current.toLocaleString()}
 					</option>
 					<option
 						value="tfsa"
 						data-account="TFSA"
-						data-amount={bankAccounts ? bankAccounts['tfsa'] : tfsa}
+						data-amount={
+							bankAccounts ? bankAccounts['tfsa'] : tfsa.current
+						}
 						disabled={transferFrom === 'tfsa'}
 					>
 						TFSA: $
 						{bankAccounts
 							? bankAccounts['tfsa'].toLocaleString()
-							: tfsa.toLocaleString()}
+							: tfsa.current.toLocaleString()}
 					</option>
 				</select>
 				<div className="flex items-center">
