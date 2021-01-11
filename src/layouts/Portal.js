@@ -40,16 +40,18 @@ const Portal = (props) => {
 
 			// Subtract the amount from the selected From account and add it to the selected To account
 			if (localStorage.getItem('bankAccounts')) {
-				let accounts = JSON.parse(localStorage.getItem('bankAccounts'));
-				accounts[transferFrom] = Number(
-					accounts[transferFrom] - amount
+				bankAccounts[transferFrom] = Number(
+					bankAccounts[transferFrom] - amount
 				);
-				accounts[transferTo] = Number(
-					(accounts[transferTo] += +amount)
+				bankAccounts[transferTo] = Number(
+					(bankAccounts[transferTo] += +amount)
 				);
 
 				// Update Local Storage item
-				localStorage.setItem('bankAccounts', JSON.stringify(accounts));
+				localStorage.setItem(
+					'bankAccounts',
+					JSON.stringify(bankAccounts)
+				);
 			}
 
 			// Reload the component using the useEffect hook to display the new amounts on the page
