@@ -12,9 +12,9 @@ const Portal = (props) => {
 	const rrsp = useRef(7891.52);
 	const tfsa = useRef(1234.19);
 	const [validTransfer, setValidTransfer] = useState(false);
-	const [amount, setAmount] = useState(0);
-	const [transferFrom, setTransferFrom] = useState();
-	const [transferTo, setTransferTo] = useState();
+	const [amount, setAmount] = useState('');
+	const [transferFrom, setTransferFrom] = useState('');
+	const [transferTo, setTransferTo] = useState('');
 	const [transferFromAccount, setTransferFromAccount] = useState();
 	const [transferToAccount, setTransferToAccount] = useState();
 
@@ -31,7 +31,9 @@ const Portal = (props) => {
 		}
 	};
 
-	const transferFunds = () => {
+	const transferFunds = (e) => {
+		e.preventDefault();
+
 		if (validTransfer && localStorage.getItem('bankAccounts')) {
 			// Check to see if the transfer amount is greater than what is currently available in the account and that the account has sufficient funds
 			if (
@@ -69,7 +71,10 @@ const Portal = (props) => {
 				// Update the valid transfer state to reload the component to display the new account amounts
 				setValidTransfer(false);
 
-				// Clear Transfer Amount input field
+				// Reset the Account Transfer fields
+				setAmount('');
+				setTransferFrom('');
+				setTransferTo('');
 			}
 		}
 	};
@@ -406,12 +411,13 @@ const Portal = (props) => {
 							: tfsa.current.toLocaleString()}
 					</option>
 				</select>
-				<div className="flex items-center">
+				<form className="flex items-center" onSubmit={transferFunds}>
 					<input
 						className="my-3 mr-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
 						id="transferAmount"
 						type="text"
 						placeholder="$0.00"
+						value={amount}
 						onChange={transferValidation}
 					/>
 					<button
@@ -423,7 +429,7 @@ const Portal = (props) => {
 					>
 						Transfer
 					</button>
-				</div>
+				</form>
 				<hr className="my-5" />
 				<h4 className="font-bold">Banking Needs:</h4>
 				<ul>
