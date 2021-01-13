@@ -32,17 +32,30 @@ const Portal = (props) => {
 	};
 
 	const transferFunds = () => {
-		if (validTransfer) {
-			// Prompt the user to confirm the transfer amount
-			console.log(
-				`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
-			);
+		if (validTransfer && localStorage.getItem('bankAccounts')) {
+			// Check to see if the transfer amount is greater than what is currently available in the account and that the account has sufficient funds
+			if (
+				amount > bankAccounts[transferFrom] &&
+				!bankAccounts[transferFrom] <= 0
+			) {
+				alert(
+					`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
+				);
+			} else if (bankAccounts[transferFrom] <= 0) {
+				// Check to see if the account has insufficient funds - if not, halt the transfer
+				alert(
+					`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
+				);
+			} else {
+				// Prompt the user to confirm the transfer amount
+				alert(
+					`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
+				);
 
-			// Subtract the amount from the selected From account and add it to the selected To account
-			if (localStorage.getItem('bankAccounts')) {
+				// Subtract the amount from the selected From account and add it to the selected To account
 				bankAccounts[transferFrom] = Number(
-					bankAccounts[transferFrom] - amount
-				).toFixed(2);
+					(bankAccounts[transferFrom] - amount).toFixed(2)
+				);
 				bankAccounts[transferTo] = Number(
 					(bankAccounts[transferTo] += +amount).toFixed(2)
 				);
@@ -52,10 +65,12 @@ const Portal = (props) => {
 					'bankAccounts',
 					JSON.stringify(bankAccounts)
 				);
-			}
 
-			// Reload the component using the useEffect hook to display the new amounts on the page
-			setValidTransfer(false);
+				// Update the valid transfer state to reload the component to display the new account amounts
+				setValidTransfer(false);
+
+				// Clear Transfer Amount input field
+			}
 		}
 	};
 
