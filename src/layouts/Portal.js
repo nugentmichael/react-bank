@@ -239,22 +239,22 @@ const Portal = (props) => {
 				</div>
 			</div>
 			<PortalSidebar
-				accounts={bankAccounts}
+				bankAccounts={bankAccounts}
 				chequing={chequing.current}
 				savings={savings.current}
 				creditCard={creditCard.current}
 				rrsp={rrsp.current}
 				tfsa={tfsa.current}
-				// validTransfer
-				// amount
-				// transferFrom
-				// setTransferFrom
-				// transferTo
-				// setTransferTo
-				// setTransferFromAccount
-				// setTransferToAccount
-				// transferFunds
-				// transferValidation
+				validTransfer={validTransfer}
+				amount={amount}
+				transferFrom={transferFrom}
+				setTransferFrom={setTransferFrom}
+				transferTo={transferTo}
+				setTransferTo={setTransferTo}
+				setTransferFromAccount={setTransferFromAccount}
+				setTransferToAccount={setTransferToAccount}
+				transferFunds={transferFunds}
+				transferValidation={transferValidation}
 			/>
 		</div>
 	);
