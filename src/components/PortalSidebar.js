@@ -2,22 +2,22 @@ import React from 'react';
 
 const PortalSidebar = (props) => {
 	const {
-		transferFrom,
-		setTransferFrom,
-		setTransferFromAccount,
 		bankAccounts,
 		chequing,
 		savings,
 		creditCard,
 		rrsp,
 		tfsa,
+		validTransfer,
+		amount,
+		transferFrom,
+		setTransferFrom,
 		transferTo,
 		setTransferTo,
+		setTransferFromAccount,
 		setTransferToAccount,
 		transferFunds,
-		amount,
 		transferValidation,
-		validTransfer,
 	} = props;
 
 	return (
