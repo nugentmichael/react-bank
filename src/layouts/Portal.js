@@ -238,7 +238,24 @@ const Portal = (props) => {
 					</ul>
 				</div>
 			</div>
-			<PortalSidebar {...props} />
+			<PortalSidebar
+				accounts={bankAccounts}
+				chequing={chequing.current}
+				savings={savings.current}
+				creditCard={creditCard.current}
+				rrsp={rrsp.current}
+				tfsa={tfsa.current}
+				// validTransfer
+				// amount
+				// transferFrom
+				// setTransferFrom
+				// transferTo
+				// setTransferTo
+				// setTransferFromAccount
+				// setTransferToAccount
+				// transferFunds
+				// transferValidation
+			/>
 		</div>
 	);
 };

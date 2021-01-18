@@ -40,70 +40,62 @@ const PortalSidebar = (props) => {
 					value="chequing"
 					data-account="Supreme No Limit Chequing"
 					data-amount={
-						bankAccounts
-							? bankAccounts['chequing']
-							: chequing.current
+						bankAccounts ? bankAccounts['chequing'] : chequing
 					}
 					disabled={transferFrom === 'chequing'}
 				>
 					Supreme No Limit Chequing: $
 					{bankAccounts
 						? bankAccounts['chequing'].toLocaleString()
-						: chequing.current.toLocaleString()}
+						: chequing.toLocaleString()}
 				</option>
 				<option
 					value="savings"
 					data-account="High Interest Savings"
 					data-amount={
-						bankAccounts ? bankAccounts['savings'] : savings.current
+						bankAccounts ? bankAccounts['savings'] : savings
 					}
 					disabled={transferFrom === 'savings'}
 				>
 					High Interest Savings: $
 					{bankAccounts
 						? bankAccounts['savings'].toLocaleString()
-						: savings.current.toLocaleString()}
+						: savings.toLocaleString()}
 				</option>
 				<option
 					value="creditCard"
 					data-account="Cash Back MasterCard"
 					data-amount={
-						bankAccounts
-							? bankAccounts['creditCard']
-							: creditCard.current
+						bankAccounts ? bankAccounts['creditCard'] : creditCard
 					}
 					disabled={transferFrom === 'creditCard'}
 				>
 					Cash Back MasterCard: $
 					{bankAccounts
 						? bankAccounts['creditCard'].toLocaleString()
-						: creditCard.current.toLocaleString()}
+						: creditCard.toLocaleString()}
 				</option>
 				<option
 					value="rrsp"
 					data-account="RRSP"
-					data-amount={
-						bankAccounts ? bankAccounts['rrsp'] : rrsp.current
-					}
+					data-amount={bankAccounts ? bankAccounts['rrsp'] : rrsp}
 					disabled={transferFrom === 'rrsp'}
 				>
 					RRSP: $
 					{bankAccounts
 						? bankAccounts['rrsp'].toLocaleString()
-						: rrsp.current.toLocaleString()}
+						: rrsp.toLocaleString()}
 				</option>
 				<option
 					value="tfsa"
 					data-account="TFSA"
-					data-amount={
-						bankAccounts ? bankAccounts['tfsa'] : tfsa.current
-					}
+					data-amount={bankAccounts ? bankAccounts['tfsa'] : tfsa}
 					disabled={transferFrom === 'tfsa'}
 				>
 					TFSA: $
 					{bankAccounts
 						? bankAccounts['tfsa'].toLocaleString()
-						: tfsa.current.toLocaleString()}
+						: tfsa.toLocaleString()}
 				</option>
 			</select>
 			<h5 className="font-semibold mt-3">To:</h5>
@@ -123,70 +115,62 @@ const PortalSidebar = (props) => {
 					value="chequing"
 					data-account="Supreme No Limit Chequing"
 					data-amount={
-						bankAccounts
-							? bankAccounts['chequing']
-							: chequing.current
+						bankAccounts ? bankAccounts['chequing'] : chequing
 					}
 					disabled={transferFrom === 'chequing'}
 				>
 					Supreme No Limit Chequing: $
 					{bankAccounts
 						? bankAccounts['chequing'].toLocaleString()
-						: chequing.current.toLocaleString()}
+						: chequing.toLocaleString()}
 				</option>
 				<option
 					value="savings"
 					data-account="High Interest Savings"
 					data-amount={
-						bankAccounts ? bankAccounts['savings'] : savings.current
+						bankAccounts ? bankAccounts['savings'] : savings
 					}
 					disabled={transferFrom === 'savings'}
 				>
 					High Interest Savings: $
 					{bankAccounts
 						? bankAccounts['savings'].toLocaleString()
-						: savings.current.toLocaleString()}
+						: savings.toLocaleString()}
 				</option>
 				<option
 					value="creditCard"
 					data-account="Cash Back MasterCard"
 					data-amount={
-						bankAccounts
-							? bankAccounts['creditCard']
-							: creditCard.current
+						bankAccounts ? bankAccounts['creditCard'] : creditCard
 					}
 					disabled={transferFrom === 'creditCard'}
 				>
 					Cash Back MasterCard: $
 					{bankAccounts
 						? bankAccounts['creditCard'].toLocaleString()
-						: creditCard.current.toLocaleString()}
+						: creditCard.toLocaleString()}
 				</option>
 				<option
 					value="rrsp"
 					data-account="RRSP"
-					data-amount={
-						bankAccounts ? bankAccounts['rrsp'] : rrsp.current
-					}
+					data-amount={bankAccounts ? bankAccounts['rrsp'] : rrsp}
 					disabled={transferFrom === 'rrsp'}
 				>
 					RRSP: $
 					{bankAccounts
 						? bankAccounts['rrsp'].toLocaleString()
-						: rrsp.current.toLocaleString()}
+						: rrsp.toLocaleString()}
 				</option>
 				<option
 					value="tfsa"
 					data-account="TFSA"
-					data-amount={
-						bankAccounts ? bankAccounts['tfsa'] : tfsa.current
-					}
+					data-amount={bankAccounts ? bankAccounts['tfsa'] : tfsa}
 					disabled={transferFrom === 'tfsa'}
 				>
 					TFSA: $
 					{bankAccounts
 						? bankAccounts['tfsa'].toLocaleString()
-						: tfsa.current.toLocaleString()}
+						: tfsa.toLocaleString()}
 				</option>
 			</select>
 			<form className="flex items-center" onSubmit={transferFunds}>
