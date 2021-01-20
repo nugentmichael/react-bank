@@ -80,9 +80,7 @@ const Portal = (props) => {
 		}
 	};
 
-	const routeChange = (e, name, account, amount) => {
-		e.preventDefault();
-
+	const routeChange = (name, account, amount) => {
 		history.push({
 			pathname: `portal/accounts/${account}`,
 			type: name,
