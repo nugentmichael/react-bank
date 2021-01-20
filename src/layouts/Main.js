@@ -21,6 +21,7 @@ const Main = () => {
 				/>
 				<Route
 					path="/portal"
+					exact
 					render={() => (
 						<Portal
 							title={`React Bank - Your Online Bank Accounts`}
@@ -28,7 +29,7 @@ const Main = () => {
 					)}
 				/>
 				<Route
-					path="/portal/account"
+					path="/portal/accounts*"
 					render={() => (
 						<Transactions
 							title={`React Bank - Your Recent Transactions`}
