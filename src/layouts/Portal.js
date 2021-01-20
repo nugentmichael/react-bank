@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import PortalSidebar from '../components/PortalSidebar';
 
 const Portal = (props) => {
+	const history = useHistory();
 	const location = useLocation();
 	const user = location.username;
 	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
@@ -79,6 +80,16 @@ const Portal = (props) => {
 		}
 	};
 
+	const routeChange = (e, name, account, amount) => {
+		e.preventDefault();
+
+		history.push({
+			pathname: `portal/accounts/${account}`,
+			type: name,
+			balance: amount,
+		});
+	};
+
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
 
@@ -108,14 +119,21 @@ const Portal = (props) => {
 				<div className="mb-8">
 					<h4 className="font-bold">Bank Accounts:</h4>
 					<ul>
-						<li className="flex my-3 py-3 border-b border-gray-300">
+						<li
+							className="flex my-3 py-3 border-b border-gray-300"
+							onClick={() =>
+								routeChange(
+									'Supreme No Limit Chequing',
+									'chequing',
+									chequing.current
+								)
+							}
+						>
 							<div className="flex flex-col justify-center flex-grow">
-								<a href="#">
-									<span>Supreme No Limit Chequing</span>
-									<span className="block text-xs">
-										Chequing 00012-1234567
-									</span>
-								</a>
+								<span>Supreme No Limit Chequing</span>
+								<span className="block text-xs">
+									Chequing 00012-1234567
+								</span>
 							</div>
 							<div className="flex flex-col justify-center">
 								<p>
