@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Login from './Login';
 import Portal from './Portal';
+import Transactions from './Transactions';
 import About from './About';
 import Error from './Error';
 
@@ -23,6 +24,14 @@ const Main = () => {
 					render={() => (
 						<Portal
 							title={`React Bank - Your Online Bank Accounts`}
+						/>
+					)}
+				/>
+				<Route
+					path="/portal/account"
+					render={() => (
+						<Transactions
+							title={`React Bank - Your Recent Transactions`}
 						/>
 					)}
 				/>
