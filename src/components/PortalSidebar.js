@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const PortalSidebar = (props) => {
 	const {
@@ -19,6 +20,7 @@ const PortalSidebar = (props) => {
 		transferFunds,
 		transferValidation,
 	} = props;
+	const history = useHistory();
 
 	return (
 		<div className="w-auto max-w-xs p-8 text-left">
@@ -207,7 +209,7 @@ const PortalSidebar = (props) => {
 				<li className="my-5">
 					<button
 						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-						// onClick={() => history.push('/')}
+						onClick={() => history.push('/')}
 					>
 						Log Out
 					</button>

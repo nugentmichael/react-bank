@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import PortalSidebar from '../components/PortalSidebar';
 
 const Portal = (props) => {
-	const history = useHistory();
 	const location = useLocation();
 	const user = location.username;
 	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
