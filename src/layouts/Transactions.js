@@ -3,14 +3,12 @@ import { useLocation } from 'react-router-dom';
 
 const Transactions = (props) => {
 	const location = useLocation();
-	const account = location.type;
-	const balance = location.amount;
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
 	}, [props.title]);
 
-	console.log(account, balance);
+	console.log(location.account, location.balance);
 
 	return (
 		<div className="flex items-center justify-around py-8">
