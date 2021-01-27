@@ -112,7 +112,6 @@ const Portal = (props) => {
 							to={{
 								pathname: '/portal/accounts/chequing',
 								account: 'Supreme No Limit Chequing',
-								type: 'chequing',
 								balance: bankAccounts
 									? bankAccounts['chequing']
 									: chequing.current,
@@ -144,7 +143,6 @@ const Portal = (props) => {
 							to={{
 								pathname: '/portal/accounts/savings',
 								account: 'High Interest Savings',
-								type: 'savings',
 								balance: bankAccounts
 									? bankAccounts['savings']
 									: savings.current,
@@ -181,7 +179,6 @@ const Portal = (props) => {
 							to={{
 								pathname: '/portal/accounts/creditcard',
 								account: 'Cash Back MasterCard',
-								type: 'creditCard',
 								balance: bankAccounts
 									? bankAccounts['creditCard']
 									: creditCard.current,
@@ -218,7 +215,6 @@ const Portal = (props) => {
 							to={{
 								pathname: '/portal/accounts/rrsp',
 								account: 'Registered Retirement Savings Plan',
-								type: 'rrsp',
 								balance: bankAccounts
 									? bankAccounts['rrsp']
 									: rrsp.current,
@@ -251,7 +247,6 @@ const Portal = (props) => {
 							to={{
 								pathname: '/portal/accounts/tfsa',
 								account: 'Tax-Free Savings Account',
-								type: 'tfsa',
 								balance: bankAccounts
 									? bankAccounts['tfsa']
 									: tfsa.current,
