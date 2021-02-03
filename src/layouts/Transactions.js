@@ -10,6 +10,7 @@ const Transactions = (props) => {
 		location.pathname.split('/').length - 1
 	];
 	const balance = location.balance;
+	const transactionAccount = localStorage.getItem('account');
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
