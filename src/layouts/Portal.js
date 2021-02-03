@@ -116,7 +116,8 @@ const Portal = (props) => {
 								localStorage.setItem(
 									'account',
 									JSON.stringify({
-										account: 'Supreme No Limit Chequing',
+										name: 'Supreme No Limit Chequing',
+										type: 'Chequing 00012-1234567',
 										balance: bankAccounts
 											? bankAccounts['chequing']
 											: chequing.current,
@@ -154,7 +155,8 @@ const Portal = (props) => {
 								localStorage.setItem(
 									'account',
 									JSON.stringify({
-										account: 'High Interest Savings',
+										name: 'High Interest Savings',
+										type: 'Savings 00034-5678912',
 										balance: bankAccounts
 											? bankAccounts['savings']
 											: savings.current,
@@ -197,7 +199,8 @@ const Portal = (props) => {
 								localStorage.setItem(
 									'account',
 									JSON.stringify({
-										account: 'Cash Back MasterCard',
+										name: 'Cash Back MasterCard',
+										type: 'Credit Card 1234 5678 9123 4567',
 										balance: bankAccounts
 											? bankAccounts['creditCard']
 											: creditCard.current,
@@ -240,8 +243,9 @@ const Portal = (props) => {
 								localStorage.setItem(
 									'account',
 									JSON.stringify({
-										account:
-											'Registered Retirement Savings Plan',
+										name: 'RRSP',
+										type:
+											'Registered Retirement Savings Plan 00056-7891234',
 										balance: bankAccounts
 											? bankAccounts['rrsp']
 											: rrsp.current,
@@ -280,7 +284,9 @@ const Portal = (props) => {
 								localStorage.setItem(
 									'account',
 									JSON.stringify({
-										account: 'Tax-Free Savings Account',
+										name: 'TFSA',
+										type:
+											'Tax-Free Savings Account 00089-5678912',
 										balance: bankAccounts
 											? bankAccounts['tfsa']
 											: tfsa.current,
