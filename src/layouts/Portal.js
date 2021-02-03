@@ -112,15 +112,17 @@ const Portal = (props) => {
 							to={{
 								pathname: '/portal/accounts/chequing',
 							}}
-							onClick={localStorage.setItem(
-								'account',
-								JSON.stringify({
-									account: 'Supreme No Limit Chequing',
-									balance: bankAccounts
-										? bankAccounts['chequing']
-										: chequing.current,
-								})
-							)}
+							onClick={() => {
+								localStorage.setItem(
+									'account',
+									JSON.stringify({
+										account: 'Supreme No Limit Chequing',
+										balance: bankAccounts
+											? bankAccounts['chequing']
+											: chequing.current,
+									})
+								);
+							}}
 						>
 							<li className="flex my-3 py-3 border-b border-gray-300">
 								<div className="flex flex-col justify-center flex-grow">
@@ -148,15 +150,17 @@ const Portal = (props) => {
 							to={{
 								pathname: '/portal/accounts/savings',
 							}}
-							onClick={localStorage.setItem(
-								'account',
-								JSON.stringify({
-									account: 'High Interest Savings',
-									balance: bankAccounts
-										? bankAccounts['savings']
-										: savings.current,
-								})
-							)}
+							onClick={() => {
+								localStorage.setItem(
+									'account',
+									JSON.stringify({
+										account: 'High Interest Savings',
+										balance: bankAccounts
+											? bankAccounts['savings']
+											: savings.current,
+									})
+								);
+							}}
 						>
 							<li className="flex my-3 py-3">
 								<div className="flex flex-col justify-center flex-grow">
@@ -189,15 +193,17 @@ const Portal = (props) => {
 							to={{
 								pathname: '/portal/accounts/creditcard',
 							}}
-							onClick={localStorage.setItem(
-								'account',
-								JSON.stringify({
-									account: 'Cash Back MasterCard',
-									balance: bankAccounts
-										? bankAccounts['creditCard']
-										: creditCard.current,
-								})
-							)}
+							onClick={() => {
+								localStorage.setItem(
+									'account',
+									JSON.stringify({
+										account: 'Cash Back MasterCard',
+										balance: bankAccounts
+											? bankAccounts['creditCard']
+											: creditCard.current,
+									})
+								);
+							}}
 						>
 							<li className="flex my-3 py-3">
 								<div className="flex flex-col justify-center flex-grow">
@@ -230,16 +236,18 @@ const Portal = (props) => {
 							to={{
 								pathname: '/portal/accounts/rrsp',
 							}}
-							onClick={localStorage.setItem(
-								'account',
-								JSON.stringify({
-									account:
-										'Registered Retirement Savings Plan',
-									balance: bankAccounts
-										? bankAccounts['rrsp']
-										: rrsp.current,
-								})
-							)}
+							onClick={() => {
+								localStorage.setItem(
+									'account',
+									JSON.stringify({
+										account:
+											'Registered Retirement Savings Plan',
+										balance: bankAccounts
+											? bankAccounts['rrsp']
+											: rrsp.current,
+									})
+								);
+							}}
 						>
 							<li className="flex my-3 py-3 border-b border-gray-300">
 								<div className="flex flex-col justify-center flex-grow">
@@ -268,15 +276,17 @@ const Portal = (props) => {
 							to={{
 								pathname: '/portal/accounts/tfsa',
 							}}
-							onClick={localStorage.setItem(
-								'account',
-								JSON.stringify({
-									account: 'Tax-Free Savings Account',
-									balance: bankAccounts
-										? bankAccounts['tfsa']
-										: tfsa.current,
-								})
-							)}
+							onClick={() => {
+								localStorage.setItem(
+									'account',
+									JSON.stringify({
+										account: 'Tax-Free Savings Account',
+										balance: bankAccounts
+											? bankAccounts['tfsa']
+											: tfsa.current,
+									})
+								);
+							}}
 						>
 							<li className="flex my-3 py-3">
 								<div className="flex flex-col justify-center flex-grow">
