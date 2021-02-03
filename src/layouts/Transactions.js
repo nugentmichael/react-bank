@@ -1,16 +1,8 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import PortalSidebar from '../components/PortalSidebar';
 
 const Transactions = (props) => {
-	const location = useLocation();
-	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
-	const account = location.account;
-	const type = location.pathname.split('/')[
-		location.pathname.split('/').length - 1
-	];
-	const balance = location.balance;
-	const transactionAccount = localStorage.getItem('account');
+	const account = JSON.parse(localStorage.getItem('account'));
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
@@ -21,18 +13,18 @@ const Transactions = (props) => {
 			<div className="w-1/2 text-left">
 				<div className="pt-8">
 					<h2 className="font-bold">React Bank</h2>
-					<h3>{account}</h3>
+					<h3>Your Recent Transactions</h3>
 					<div className="flex my-3">
 						<div className="flex flex-col justify-center flex-grow">
-							<span>Supreme No Limit Chequing</span>
+							<span>{account.name}</span>
 							<span className="block text-xs">
-								Chequing 00012-1234567
+								{account.type}
 							</span>
 						</div>
 						<div className="flex flex-col justify-center">
 							<p>
 								<span className="text-lg font-normal">
-									${bankAccounts[type]}
+									${account.balance}
 									<sup className="text-xs">CAD</sup>
 								</span>
 							</p>
