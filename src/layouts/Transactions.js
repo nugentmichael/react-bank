@@ -1,11 +1,20 @@
 import React, { useEffect } from 'react';
 import PortalSidebar from '../components/PortalSidebar';
+import AccountTransactions from '../assets/transactions.json';
 
 const Transactions = (props) => {
 	const account = JSON.parse(localStorage.getItem('account'));
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
+
+		// Check to see if there is a Local Storage object containing the bank account transactions, if not, create one.
+		if (!localStorage.getItem('transactions')) {
+			localStorage.setItem(
+				'transactions',
+				JSON.stringify(AccountTransactions)
+			);
+		}
 	}, [props.title]);
 
 	return (
