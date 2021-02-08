@@ -1,0 +1,42 @@
+{
+	"chequing": [
+		{
+			"date": "2015-03-25",
+			"description": "",
+			"amount": "",
+			"balance": ""
+		}
+	],
+	"savings": [
+		{
+			"date": "2015-03-25",
+			"description": "",
+			"amount": "",
+			"balance": ""
+		}
+	],
+	"creditCard": [
+		{
+			"date": "2015-03-25",
+			"description": "",
+			"amount": "",
+			"balance": ""
+		}
+	],
+	"rrsp": [
+		{
+			"date": "2015-03-25",
+			"description": "",
+			"amount": "",
+			"balance": ""
+		}
+	],
+	"tfsa": [
+		{
+			"date": "2015-03-25",
+			"description": "",
+			"amount": "",
+			"balance": ""
+		}
+	]
+}
