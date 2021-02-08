@@ -4,6 +4,9 @@ import AccountTransactions from '../assets/transactions.json';
 
 const Transactions = (props) => {
 	const account = JSON.parse(localStorage.getItem('account'));
+	const transactionDetails = JSON.parse(localStorage.getItem('transactions'))[
+		account.account
+	];
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
@@ -44,32 +47,37 @@ const Transactions = (props) => {
 				<div className="mb-8">
 					<h4 className="font-bold">Transactions:</h4>
 					<ul>
-						<li className="flex my-3 py-3 border-b border-gray-300">
-							<div className="flex flex-col justify-center flex-grow">
-								<span>Transaction #1</span>
-							</div>
-							<div className="flex flex-col justify-center">
-								<p>
-									<span className="text-lg font-normal">
-										$1.23
-										<sup className="text-xs">CAD</sup>
-									</span>
-								</p>
-							</div>
-						</li>
-						<li className="flex my-3">
-							<div className="flex flex-col justify-center flex-grow">
-								<span>Transaction #2</span>
-							</div>
-							<div className="flex flex-col justify-center">
-								<p>
-									<span className="text-lg font-normal">
-										$4.56
-										<sup className="text-xs">CAD</sup>
-									</span>
-								</p>
-							</div>
-						</li>
+						{localStorage.getItem('transactions') ? (
+							transactionDetails.map((transaction, index) => (
+								<li
+									key={index}
+									className="flex my-3 py-3 border-b border-gray-300"
+								>
+									<div className="flex flex-col justify-center flex-grow">
+										<span>{transaction.description}</span>
+										<span className="block text-xs">
+											{transaction.date}
+										</span>
+									</div>
+									<div className="flex flex-col justify-center">
+										<p>
+											<span className="text-lg font-normal">
+												${transaction.amount}
+												<sup className="text-xs">
+													CAD
+												</sup>
+											</span>
+										</p>
+									</div>
+								</li>
+							))
+						) : (
+							<li className="flex my-3 py-3 border-b border-gray-300">
+								<div className="flex flex-col justify-center">
+									<span>No transactions found.</span>
+								</div>
+							</li>
+						)}
 					</ul>
 				</div>
 			</div>
