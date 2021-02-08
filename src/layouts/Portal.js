@@ -116,6 +116,7 @@ const Portal = (props) => {
 								localStorage.setItem(
 									'account',
 									JSON.stringify({
+										account: 'chequing',
 										name: 'Supreme No Limit Chequing',
 										type: 'Chequing 00012-1234567',
 										balance: bankAccounts
@@ -155,6 +156,7 @@ const Portal = (props) => {
 								localStorage.setItem(
 									'account',
 									JSON.stringify({
+										account: 'savings',
 										name: 'High Interest Savings',
 										type: 'Savings 00034-5678912',
 										balance: bankAccounts
@@ -199,6 +201,7 @@ const Portal = (props) => {
 								localStorage.setItem(
 									'account',
 									JSON.stringify({
+										account: 'creditCard',
 										name: 'Cash Back MasterCard',
 										type: 'Credit Card 1234 5678 9123 4567',
 										balance: bankAccounts
@@ -243,6 +246,7 @@ const Portal = (props) => {
 								localStorage.setItem(
 									'account',
 									JSON.stringify({
+										account: 'rrsp',
 										name: 'RRSP',
 										type:
 											'Registered Retirement Savings Plan 00056-7891234',
@@ -284,6 +288,7 @@ const Portal = (props) => {
 								localStorage.setItem(
 									'account',
 									JSON.stringify({
+										account: 'tfsa',
 										name: 'TFSA',
 										type:
 											'Tax-Free Savings Account 00089-5678912',
