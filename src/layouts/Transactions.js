@@ -18,6 +18,7 @@ const Transactions = (props) => {
 		}
 	}, [props.title]);
 
+	// If the LocalStorage object containing the Transactions data exists, assign the variable accordingly based on the account selected.
 	if (localStorage.getItem('transactions')) {
 		transactionDetails = JSON.parse(localStorage.getItem('transactions'))[
 			account.account
@@ -40,7 +41,7 @@ const Transactions = (props) => {
 						<div className="flex flex-col justify-center">
 							<p>
 								<span className="text-lg font-normal">
-									$0.00
+									${account.balance}
 									<sup className="text-xs">CAD</sup>
 								</span>
 							</p>
