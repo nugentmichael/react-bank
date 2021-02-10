@@ -4,9 +4,7 @@ import AccountTransactions from '../assets/transactions.json';
 
 const Transactions = (props) => {
 	const account = JSON.parse(localStorage.getItem('account'));
-	const transactionDetails = JSON.parse(localStorage.getItem('transactions'))[
-		account.account
-	];
+	let transactionDetails = null;
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
@@ -19,6 +17,12 @@ const Transactions = (props) => {
 			);
 		}
 	}, [props.title]);
+
+	if (localStorage.getItem('transactions')) {
+		transactionDetails = JSON.parse(localStorage.getItem('transactions'))[
+			account.account
+		];
+	}
 
 	return (
 		<div className="flex items-start justify-center py-8">
@@ -36,7 +40,7 @@ const Transactions = (props) => {
 						<div className="flex flex-col justify-center">
 							<p>
 								<span className="text-lg font-normal">
-									${account.balance}
+									$0.00
 									<sup className="text-xs">CAD</sup>
 								</span>
 							</p>
