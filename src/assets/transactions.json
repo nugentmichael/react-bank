@@ -1,6 +1,60 @@
 {
 	"chequing": [
 		{
+			"date": "2015-03-02",
+			"description": "Paycheque",
+			"amount": "2450.45"
+		},
+		{
+			"date": "2015-03-07",
+			"description": "Credit Card Payment",
+			"amount": "750.00"
+		},
+		{
+			"date": "2015-03-30",
+			"description": "Student Loan Payment",
+			"amount": "395.00"
+		},
+		{
+			"date": "2015-03-30",
+			"description": "Mutual Funds Deposit",
+			"amount": "150.00"
+		},
+		{
+			"date": "2015-03-30",
+			"description": "Hydro Bill Payment",
+			"amount": "58.52"
+		},
+		{
+			"date": "2015-04-01",
+			"description": "Home Insurance",
+			"amount": "36.59"
+		},
+		{
+			"date": "2015-04-13",
+			"description": "Bank Monthly Fee",
+			"amount": "9.99"
+		}
+	],
+	"savings": [
+		{
+			"date": "2015-01-25",
+			"description": "Savings Deposit",
+			"amount": "100.00"
+		},
+		{
+			"date": "2015-02-25",
+			"description": "Savings Deposit",
+			"amount": "100.00"
+		},
+		{
+			"date": "2015-03-25",
+			"description": "Savings Deposit",
+			"amount": "100.00"
+		}
+	],
+	"creditCard": [
+		{
 			"date": "2015-03-20",
 			"description": "Netflix",
 			"amount": "14.99"
@@ -36,32 +90,38 @@
 			"amount": "8.52"
 		}
 	],
-	"savings": [
-		{
-			"date": "2015-03-25",
-			"description": "",
-			"amount": ""
-		}
-	],
-	"creditCard": [
-		{
-			"date": "2015-03-25",
-			"description": "",
-			"amount": ""
-		}
-	],
 	"rrsp": [
 		{
+			"date": "2015-01-25",
+			"description": "RRSP Transfer",
+			"amount": "100.00"
+		},
+		{
+			"date": "2015-02-25",
+			"description": "RRSP Transfer",
+			"amount": "100.00"
+		},
+		{
 			"date": "2015-03-25",
-			"description": "",
-			"amount": ""
+			"description": "RRSP Transfer",
+			"amount": "100.00"
 		}
 	],
 	"tfsa": [
 		{
+			"date": "2015-01-25",
+			"description": "TFSA Transfer",
+			"amount": "100.00"
+		},
+		{
+			"date": "2015-02-25",
+			"description": "TFSA Transfer",
+			"amount": "100.00"
+		},
+		{
 			"date": "2015-03-25",
-			"description": "",
-			"amount": ""
+			"description": "TFSA Transfer",
+			"amount": "100.00"
 		}
 	]
 }
