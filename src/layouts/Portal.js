@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import PortalSidebar from '../components/PortalSidebar';
+import AccountTransactions from '../assets/transactions.json';
 
 const Portal = (props) => {
 	const location = useLocation();
@@ -93,6 +94,14 @@ const Portal = (props) => {
 					rrsp: rrsp.current,
 					tfsa: tfsa.current,
 				})
+			);
+		}
+
+		// Check to see if there is a Local Storage object containing the bank account transactions, if not, create one.
+		if (!localStorage.getItem('transactions')) {
+			localStorage.setItem(
+				'transactions',
+				JSON.stringify(AccountTransactions)
 			);
 		}
 	}, [props.title]);
