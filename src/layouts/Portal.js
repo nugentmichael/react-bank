@@ -7,6 +7,7 @@ const Portal = (props) => {
 	const location = useLocation();
 	const user = location.username;
 	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
+	const transactions = JSON.parse(localStorage.getItem('transactions'));
 	const chequing = useRef(10000.12);
 	const savings = useRef(1234.56);
 	const creditCard = useRef(2345.89);
@@ -63,10 +64,29 @@ const Portal = (props) => {
 					(bankAccounts[transferTo] += +amount).toFixed(2)
 				);
 
-				// Update Local Storage item
+				// Update the Bank Accounts Local Storage item
 				localStorage.setItem(
 					'bankAccounts',
 					JSON.stringify(bankAccounts)
+				);
+
+				// Add to the fund transfer details to the Transactions LocalStorage object.
+				transactions[transferTo].push({
+					amount: amount,
+					date: new Date().toISOString().slice(0, 10),
+					description: `Funds Transfer From ${transferFromAccount}: $${amount}.`,
+				});
+
+				transactions[transferFrom].push({
+					amount: amount,
+					date: new Date().toISOString().slice(0, 10),
+					description: `Funds Transfer To ${transferToAccount}: $${amount}.`,
+				});
+
+				// Update the Transactions Local Storage item
+				localStorage.setItem(
+					'transactions',
+					JSON.stringify(transactions)
 				);
 
 				// Update the valid transfer state to reload the component to display the new account amounts
