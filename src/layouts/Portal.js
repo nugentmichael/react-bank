@@ -72,15 +72,19 @@ const Portal = (props) => {
 
 				// Add to the fund transfer details to the Transactions LocalStorage object.
 				transactions[transferTo].push({
-					amount: amount,
+					amount: Number(amount).toFixed(2),
 					date: new Date().toISOString().slice(0, 10),
-					description: `Funds Transfer From ${transferFromAccount}: $${amount}.`,
+					description: `Funds Transfer From ${transferFromAccount} Account: $${Number(
+						amount
+					).toFixed(2)}.`,
 				});
 
 				transactions[transferFrom].push({
-					amount: amount,
+					amount: Number(amount).toFixed(2),
 					date: new Date().toISOString().slice(0, 10),
-					description: `Funds Transfer To ${transferToAccount}: $${amount}.`,
+					description: `Funds Transfer To ${transferToAccount} Account: $${Number(
+						amount
+					).toFixed(2)}.`,
 				});
 
 				// Update the Transactions Local Storage item
