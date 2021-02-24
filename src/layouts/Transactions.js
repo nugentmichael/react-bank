@@ -53,29 +53,33 @@ const Transactions = (props) => {
 					<h4 className="font-bold">Transactions:</h4>
 					<ul>
 						{localStorage.getItem('transactions') ? (
-							transactionDetails.map((transaction, index) => (
-								<li
-									key={index}
-									className="flex my-3 py-3 border-b border-gray-300"
-								>
-									<div className="flex flex-col justify-center flex-grow">
-										<span>{transaction.description}</span>
-										<span className="block text-xs">
-											{transaction.date}
-										</span>
-									</div>
-									<div className="flex flex-col justify-center">
-										<p>
-											<span className="text-lg font-normal">
-												${transaction.amount}
-												<sup className="text-xs">
-													CAD
-												</sup>
+							transactionDetails
+								.reverse()
+								.map((transaction, index) => (
+									<li
+										key={index}
+										className="flex my-3 py-3 border-b border-gray-300"
+									>
+										<div className="flex flex-col justify-center flex-grow">
+											<span>
+												{transaction.description}
 											</span>
-										</p>
-									</div>
-								</li>
-							))
+											<span className="block text-xs">
+												{transaction.date}
+											</span>
+										</div>
+										<div className="flex flex-col justify-center">
+											<p>
+												<span className="text-lg font-normal">
+													${transaction.amount}
+													<sup className="text-xs">
+														CAD
+													</sup>
+												</span>
+											</p>
+										</div>
+									</li>
+								))
 						) : (
 							<li className="flex my-3 py-3 border-b border-gray-300">
 								<div className="flex flex-col justify-center">
