@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const PortalSidebar = (props) => {
-	const { bankAccounts, chequing, savings, creditCard, rrsp, tfsa } = props;
+	const { chequing, savings, creditCard, rrsp, tfsa, flag, setFlag } = props;
+	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
 	const transactions = JSON.parse(localStorage.getItem('transactions'));
 	const history = useHistory();
 	const [validTransfer, setValidTransfer] = useState(false);
@@ -92,6 +93,7 @@ const PortalSidebar = (props) => {
 				setAmount('');
 				setTransferFrom('');
 				setTransferTo('');
+				setFlag(!flag);
 			}
 		}
 	};

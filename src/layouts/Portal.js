@@ -12,6 +12,7 @@ const Portal = (props) => {
 	const creditCard = useRef(2345.89);
 	const rrsp = useRef(7891.52);
 	const tfsa = useRef(1234.19);
+	const [flag, setFlag] = useState(false);
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
@@ -37,6 +38,8 @@ const Portal = (props) => {
 				JSON.stringify(AccountTransactions)
 			);
 		}
+
+		setFlag(!flag);
 	}, [props.title]);
 
 	return (
@@ -273,16 +276,8 @@ const Portal = (props) => {
 				creditCard={creditCard.current}
 				rrsp={rrsp.current}
 				tfsa={tfsa.current}
-				// validTransfer={validTransfer}
-				// amount={amount}
-				// transferFrom={transferFrom}
-				// setTransferFrom={setTransferFrom}
-				// transferTo={transferTo}
-				// setTransferTo={setTransferTo}
-				// setTransferFromAccount={setTransferFromAccount}
-				// setTransferToAccount={setTransferToAccount}
-				// transferFunds={transferFunds}
-				// transferValidation={transferValidation}
+				flag={flag}
+				setFlag={setFlag}
 			/>
 		</div>
 	);
