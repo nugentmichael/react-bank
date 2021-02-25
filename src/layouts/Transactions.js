@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import AccountSidebar from '../components/AccountSidebar';
 import AccountTransactions from '../assets/transactions.json';
 
 const Transactions = (props) => {
+	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
 	const account = JSON.parse(localStorage.getItem('account'));
+	const [flag, setFlag] = useState(false);
 	let transactionDetails = null;
 
 	useEffect(() => {
@@ -41,7 +43,7 @@ const Transactions = (props) => {
 						<div className="flex flex-col justify-center">
 							<p>
 								<span className="text-lg font-normal">
-									${account.balance}
+									${bankAccounts[account.account]}
 									<sup className="text-xs">CAD</sup>
 								</span>
 							</p>
@@ -90,24 +92,26 @@ const Transactions = (props) => {
 					</ul>
 				</div>
 			</div>
-			{/* <PortalSidebar
-				bankAccounts={bankAccounts}
-				chequing={chequing.current}
-				savings={savings.current}
-				creditCard={creditCard.current}
-				rrsp={rrsp.current}
-				tfsa={tfsa.current}
-				validTransfer={validTransfer}
-				amount={amount}
-				transferFrom={transferFrom}
-				setTransferFrom={setTransferFrom}
-				transferTo={transferTo}
-				setTransferTo={setTransferTo}
-				setTransferFromAccount={setTransferFromAccount}
-				setTransferToAccount={setTransferToAccount}
-				transferFunds={transferFunds}
-				transferValidation={transferValidation}
-			/> */}
+			<AccountSidebar
+				flag={flag}
+				setFlag={setFlag}
+				// bankAccounts={bankAccounts}
+				// chequing={chequing.current}
+				// savings={savings.current}
+				// creditCard={creditCard.current}
+				// rrsp={rrsp.current}
+				// tfsa={tfsa.current}
+				// validTransfer={validTransfer}
+				// amount={amount}
+				// transferFrom={transferFrom}
+				// setTransferFrom={setTransferFrom}
+				// transferTo={transferTo}
+				// setTransferTo={setTransferTo}
+				// setTransferFromAccount={setTransferFromAccount}
+				// setTransferToAccount={setTransferToAccount}
+				// transferFunds={transferFunds}
+				// transferValidation={transferValidation}
+			/>
 		</div>
 	);
 };
