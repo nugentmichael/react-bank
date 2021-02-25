@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import PortalSidebar from '../components/PortalSidebar';
+import AccountSidebar from '../components/AccountSidebar';
 import AccountTransactions from '../assets/transactions.json';
 
 const Transactions = (props) => {
