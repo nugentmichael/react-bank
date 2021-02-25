@@ -1,26 +1,100 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 const PortalSidebar = (props) => {
-	const {
-		bankAccounts,
-		chequing,
-		savings,
-		creditCard,
-		rrsp,
-		tfsa,
-		validTransfer,
-		amount,
-		transferFrom,
-		setTransferFrom,
-		transferTo,
-		setTransferTo,
-		setTransferFromAccount,
-		setTransferToAccount,
-		transferFunds,
-		transferValidation,
-	} = props;
+	const { bankAccounts, chequing, savings, creditCard, rrsp, tfsa } = props;
+	const transactions = JSON.parse(localStorage.getItem('transactions'));
 	const history = useHistory();
+	const [validTransfer, setValidTransfer] = useState(false);
+	const [amount, setAmount] = useState('');
+	const [transferFrom, setTransferFrom] = useState('');
+	const [transferTo, setTransferTo] = useState('');
+	const [transferFromAccount, setTransferFromAccount] = useState();
+	const [transferToAccount, setTransferToAccount] = useState();
+
+	const transferValidation = (e) => {
+		if (
+			e.target.value !== '' &&
+			!isNaN(e.target.value) &&
+			transferFrom !== transferTo
+		) {
+			setAmount(e.target.value);
+			setValidTransfer(true);
+		} else {
+			setValidTransfer(false);
+		}
+	};
+
+	const transferFunds = (e) => {
+		e.preventDefault();
+
+		if (validTransfer && localStorage.getItem('bankAccounts')) {
+			// Check to see if the transfer amount is greater than what is currently available in the account and that the account has sufficient funds
+			if (
+				amount > bankAccounts[transferFrom] &&
+				!bankAccounts[transferFrom] <= 0
+			) {
+				alert(
+					`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
+				);
+			} else if (bankAccounts[transferFrom] <= 0) {
+				// Check to see if the account has insufficient funds - if not, halt the transfer
+				alert(
+					`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
+				);
+			} else {
+				// Prompt the user to confirm the transfer amount
+				alert(
+					`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
+				);
+
+				// Subtract the amount from the selected From account and add it to the selected To account
+				bankAccounts[transferFrom] = Number(
+					(bankAccounts[transferFrom] - amount).toFixed(2)
+				);
+				bankAccounts[transferTo] = Number(
+					(bankAccounts[transferTo] += +amount).toFixed(2)
+				);
+
+				// Update the Bank Accounts Local Storage item
+				localStorage.setItem(
+					'bankAccounts',
+					JSON.stringify(bankAccounts)
+				);
+
+				// Add to the fund transfer details to the Transactions LocalStorage object.
+				transactions[transferTo].push({
+					amount: Number(amount).toFixed(2),
+					date: new Date().toISOString().slice(0, 10),
+					description: `Funds Transfer From ${transferFromAccount} Account: $${Number(
+						amount
+					).toFixed(2)}.`,
+				});
+
+				transactions[transferFrom].push({
+					amount: Number(amount).toFixed(2),
+					date: new Date().toISOString().slice(0, 10),
+					description: `Funds Transfer To ${transferToAccount} Account: $${Number(
+						amount
+					).toFixed(2)}.`,
+				});
+
+				// Update the Transactions Local Storage item
+				localStorage.setItem(
+					'transactions',
+					JSON.stringify(transactions)
+				);
+
+				// Update the valid transfer state to reload the component to display the new account amounts
+				setValidTransfer(false);
+
+				// Reset the Account Transfer fields
+				setAmount('');
+				setTransferFrom('');
+				setTransferTo('');
+			}
+		}
+	};
 
 	return (
 		<div className="w-auto max-w-xs p-8 text-left">
