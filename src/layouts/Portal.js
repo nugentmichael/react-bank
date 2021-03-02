@@ -40,7 +40,7 @@ const Portal = (props) => {
 		}
 
 		setFlag(!flag);
-	}, [props.title]);
+	}, [props.title, flag]);
 
 	return (
 		<div className="flex items-start justify-center py-8">
