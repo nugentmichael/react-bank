@@ -39,7 +39,7 @@ const Portal = (props) => {
 			);
 		}
 
-		setFlag(!flag);
+		flag && setFlag(!flag);
 	}, [props.title, flag]);
 
 	return (
