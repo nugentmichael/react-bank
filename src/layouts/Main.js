@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Login from './Login';
 import Portal from './Portal';
 import Transactions from './Transactions';
+import Business from './Business';
 import About from './About';
 import Error from './Error';
 
@@ -13,6 +14,13 @@ const Main = () => {
 				<Route
 					path="/"
 					render={() => <Login title={`Welcome to React Bank!`} />}
+					exact
+				/>
+				<Route
+					path="/business"
+					render={() => (
+						<Business title={`React Bank - Business Accounts`} />
+					)}
 					exact
 				/>
 				<Route

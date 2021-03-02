@@ -39,7 +39,7 @@ const Header = () => {
 						</Link>
 					</li>
 					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2">
-						<Link className="text-white" to="/">
+						<Link className="text-white" to="/business">
 							Business
 						</Link>
 					</li>
