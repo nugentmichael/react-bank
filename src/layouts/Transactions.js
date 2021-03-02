@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import AccountSidebar from '../components/AccountSidebar';
 import AccountTransactions from '../assets/transactions.json';
 
@@ -31,7 +32,14 @@ const Transactions = (props) => {
 		<div className="flex items-start justify-center py-8">
 			<div className="w-1/2 text-left">
 				<div className="pt-8">
-					<h2 className="font-bold">React Bank</h2>
+					<div className="flex items-center justify-between mb-4">
+						<h2 className="font-bold">React Bank</h2>
+						<Link to="/portal">
+							<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+								Return to Accounts
+							</button>
+						</Link>
+					</div>
 					<h3>Your Recent Transactions</h3>
 					<div className="flex my-3">
 						<div className="flex flex-col justify-center flex-grow">
