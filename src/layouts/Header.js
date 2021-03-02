@@ -34,13 +34,19 @@ const Header = () => {
 			>
 				<ul className="sm:flex">
 					<li className="font-semibold hover:bg-gray-400 rounded px-2">
-						<Link to="/">Personal</Link>
+						<Link className="text-white" to="/">
+							Personal
+						</Link>
 					</li>
 					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2">
-						<Link to="/">Business</Link>
+						<Link className="text-white" to="/">
+							Business
+						</Link>
 					</li>
 					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2">
-						<Link to="/about">About</Link>
+						<Link className="text-white" to="/about">
+							About
+						</Link>
 					</li>
 				</ul>
 			</nav>
