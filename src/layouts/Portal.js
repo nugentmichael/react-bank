@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PortalSidebar from '../components/AccountSidebar';
 import AccountTransactions from '../assets/transactions.json';
 
 const Portal = (props) => {
-	const location = useLocation();
-	const user = location.username;
+	const user = JSON.parse(localStorage.getItem('userLogin'))['username'];
+	const loggedIn = JSON.parse(localStorage.getItem('userLogin'))['loggedIn'];
+	const history = useHistory();
 	const bankAccounts = JSON.parse(localStorage.getItem('bankAccounts'));
 	const chequing = useRef(10000.12);
 	const savings = useRef(1234.56);
@@ -16,6 +17,9 @@ const Portal = (props) => {
 
 	useEffect(() => {
 		document.title = props.title || 'React Bank';
+
+		// If the loggedIn flag is set to false, return the user to the main login page.
+		!loggedIn && history.push('/');
 
 		// Check to see if there is a Local Storage object containing the bank account details with their amounts, if not, create one.
 		if (!localStorage.getItem('bankAccounts')) {
