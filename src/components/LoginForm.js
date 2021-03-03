@@ -11,7 +11,17 @@ const LoginForm = () => {
 	const history = useHistory();
 
 	const routeChange = (name) => {
-		history.push({ pathname: 'portal', username: name });
+		history.push('portal');
+
+		if (!localStorage.getItem('userLogin')) {
+			localStorage.setItem(
+				'userLogin',
+				JSON.stringify({
+					username: name,
+					login: true,
+				})
+			);
+		}
 	};
 
 	useEffect(() => {
