@@ -98,6 +98,11 @@ const PortalSidebar = (props) => {
 		}
 	};
 
+	const logOut = () => {
+		localStorage.removeItem('userLogin');
+		history.push('/');
+	};
+
 	return (
 		<div className="w-auto max-w-xs p-8 text-left">
 			<h4 className="font-bold">Transfer Funds:</h4>
@@ -285,7 +290,7 @@ const PortalSidebar = (props) => {
 				<li className="my-5">
 					<button
 						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-						onClick={() => history.push('/')}
+						onClick={logOut}
 					>
 						Log Out
 					</button>
