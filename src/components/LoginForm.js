@@ -13,15 +13,13 @@ const LoginForm = () => {
 	const routeChange = (name) => {
 		history.push('portal');
 
-		if (!localStorage.getItem('userLogin')) {
-			localStorage.setItem(
-				'userLogin',
-				JSON.stringify({
-					username: name,
-					login: true,
-				})
-			);
-		}
+		localStorage.setItem(
+			'userLogin',
+			JSON.stringify({
+				username: name,
+				loggedIn: true,
+			})
+		);
 	};
 
 	useEffect(() => {
