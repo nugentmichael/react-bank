@@ -32,14 +32,13 @@ const Transactions = (props) => {
 		<div className="flex items-start justify-center py-8">
 			<div className="w-1/2 text-left">
 				<div className="pt-8">
-					<div className="flex items-center justify-between mb-4">
-						<h2 className="font-bold">React Bank</h2>
-						<Link to="/portal">
-							<button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-								Return to Accounts
-							</button>
-						</Link>
-					</div>
+					<Link
+						to="/portal"
+						className="block mb-4 text-blue-500 hover:text-blue-700 focus:outline-none focus:shadow-outline"
+					>
+						&laquo; Return to Accounts
+					</Link>
+					<h2 className="font-bold">React Bank</h2>
 					<h3>Your Recent Transactions</h3>
 					<div className="flex my-3">
 						<div className="flex flex-col justify-center flex-grow">
