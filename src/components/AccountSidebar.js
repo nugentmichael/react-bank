@@ -99,7 +99,14 @@ const PortalSidebar = (props) => {
 	};
 
 	const logOut = () => {
-		localStorage.removeItem('userLogin');
+		localStorage.setItem(
+			'userLogin',
+			JSON.stringify({
+				username: '',
+				loggedIn: false,
+			})
+		);
+
 		history.push('/');
 	};
 
