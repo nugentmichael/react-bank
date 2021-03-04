@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import LoginForm from '../components/LoginForm';
 
 const Business = (props) => {
 	useEffect(() => {
@@ -8,11 +9,14 @@ const Business = (props) => {
 	return (
 		<div className="flex items-center justify-around py-8">
 			<div>
-				<h3>Welcome to React Bank!</h3>
+				<h3>Welcome to React Bank for Business!</h3>
 				<h4>
-					Business accounts are not yet available but will be
-					launching in the coming months.
+					Your home for managing your business finances using the
+					latest web technologies.
 				</h4>
+			</div>
+			<div className="w-full max-w-xs">
+				<LoginForm />
 			</div>
 		</div>
 	);
