@@ -7,9 +7,14 @@ const Login = (props) => {
 	}, [props.title]);
 
 	return (
-		<div className="flex items-center justify-around py-8 w-full max-w-screen-xl">
-			<div>
-				<h3>Welcome to React Bank!</h3>
+		<div className="personal-login flex items-center justify-around py-8 w-full">
+			<div className="bg-black bg-opacity-25 p-4 text-white">
+				<h3>
+					Welcome to React Bank!{' '}
+					<span role="img" aria-label="Bank Emoji">
+						🏦
+					</span>
+				</h3>
 				<h4>
 					Your home for managing your finances using the latest web
 					technologies.

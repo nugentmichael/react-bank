@@ -34,3 +34,23 @@
 .tooltip:hover + .tooltip-text {
 	opacity: 100%;
 }
+
+.personal-login {
+	background: url('assets/images/wheat-field.jpeg') center center/cover
+		no-repeat fixed;
+
+	h3,
+	h4 {
+		text-shadow: 2px 2px 7px #333;
+	}
+}
+
+.business-login {
+	background: url('assets/images/bank-tower.jpeg') center center/cover
+		no-repeat fixed;
+
+	h3,
+	h4 {
+		text-shadow: 2px 2px 7px #333;
+	}
+}

@@ -49,7 +49,7 @@ const LoginForm = () => {
 
 	return (
 		<form
-			className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+			className="bg-white bg-opacity-80 shadow-md rounded px-8 pt-6 pb-8 mb-4"
 			autoComplete="off"
 			onSubmit={handleSubmit}
 		>
