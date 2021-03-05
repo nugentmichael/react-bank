@@ -7,7 +7,7 @@ const Login = (props) => {
 	}, [props.title]);
 
 	return (
-		<div className="flex items-center justify-around py-8">
+		<div className="flex items-center justify-around py-8 w-full max-w-screen-xl">
 			<div>
 				<h3>Welcome to React Bank!</h3>
 				<h4>

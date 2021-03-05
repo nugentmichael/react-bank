@@ -47,7 +47,7 @@ const Portal = (props) => {
 	}, [props.title, flag]);
 
 	return (
-		<div className="flex items-start justify-center py-8">
+		<div className="flex items-start justify-center py-8 w-full max-w-screen-xl">
 			<div className="w-1/2 text-left">
 				<div className="pt-8">
 					<h2 className="font-bold">Weclome{user && `, ${user}`}!</h2>

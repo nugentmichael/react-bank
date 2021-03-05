@@ -9,7 +9,7 @@ import Error from './Error';
 
 const Main = () => {
 	return (
-		<div>
+		<>
 			<Switch>
 				<Route
 					path="/"
@@ -51,7 +51,7 @@ const Main = () => {
 					)}
 				/>
 			</Switch>
-		</div>
+		</>
 	);
 };
 

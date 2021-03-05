@@ -99,26 +99,7 @@ const Transactions = (props) => {
 					</ul>
 				</div>
 			</div>
-			<AccountSidebar
-				flag={flag}
-				setFlag={setFlag}
-				// bankAccounts={bankAccounts}
-				// chequing={chequing.current}
-				// savings={savings.current}
-				// creditCard={creditCard.current}
-				// rrsp={rrsp.current}
-				// tfsa={tfsa.current}
-				// validTransfer={validTransfer}
-				// amount={amount}
-				// transferFrom={transferFrom}
-				// setTransferFrom={setTransferFrom}
-				// transferTo={transferTo}
-				// setTransferTo={setTransferTo}
-				// setTransferFromAccount={setTransferFromAccount}
-				// setTransferToAccount={setTransferToAccount}
-				// transferFunds={transferFunds}
-				// transferValidation={transferValidation}
-			/>
+			<AccountSidebar flag={flag} setFlag={setFlag} />
 		</div>
 	);
 };

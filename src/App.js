@@ -12,9 +12,7 @@ function App() {
 			<div className="grid auto-rows-auto">
 				<Header />
 				<main className="flex items-center flex items-center justify-center">
-					<div className="w-full">
-						<Main />
-					</div>
+					<Main />
 				</main>
 				<Footer />
 			</div>
