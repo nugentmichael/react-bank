@@ -7,7 +7,7 @@ const Business = (props) => {
 	}, [props.title]);
 
 	return (
-		<div className="business-login flex items-center justify-around py-8 w-full">
+		<div className="business-login flex items-center justify-around py-20 w-full">
 			<div className="bg-black bg-opacity-25 p-4 text-white">
 				<h3>
 					Welcome to React Bank for Business!{' '}
