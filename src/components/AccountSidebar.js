@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+// import Modal from './Modal';
 
 const PortalSidebar = (props) => {
 	const { chequing, savings, creditCard, rrsp, tfsa, flag, setFlag } = props;
@@ -12,6 +13,7 @@ const PortalSidebar = (props) => {
 	const [transferTo, setTransferTo] = useState('');
 	const [transferFromAccount, setTransferFromAccount] = useState();
 	const [transferToAccount, setTransferToAccount] = useState();
+	const [transferMessage, setTransferMessage] = useState('');
 
 	const transferValidation = (e) => {
 		if (
@@ -28,6 +30,7 @@ const PortalSidebar = (props) => {
 
 	const transferFunds = (e) => {
 		e.preventDefault();
+		let prompt;
 
 		if (validTransfer && localStorage.getItem('bankAccounts')) {
 			// Check to see if the transfer amount is greater than what is currently available in the account and that the account has sufficient funds
@@ -35,19 +38,38 @@ const PortalSidebar = (props) => {
 				amount > bankAccounts[transferFrom] &&
 				!bankAccounts[transferFrom] <= 0
 			) {
-				alert(
-					`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
+				prompt = (
+					<Modal
+						message={`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`}
+					/>
 				);
+				// alert(
+				// 	`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
+				// );
 			} else if (bankAccounts[transferFrom] <= 0) {
 				// Check to see if the account has insufficient funds - if not, halt the transfer
-				alert(
-					`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
+				prompt = (
+					<Modal
+						message={`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`}
+					/>
 				);
+				// alert(
+				// 	`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
+				// );
 			} else {
 				// Prompt the user to confirm the transfer amount
-				alert(
-					`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
+				// setTransferMessage(
+				// 	`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
+				// );
+				prompt = (
+					<Modal
+						message={`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`}
+					/>
 				);
+
+				// alert(
+				// 	`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
+				// );
 
 				// Subtract the amount from the selected From account and add it to the selected To account
 				bankAccounts[transferFrom] = Number(
@@ -95,7 +117,14 @@ const PortalSidebar = (props) => {
 				setTransferTo('');
 				setFlag(!flag);
 			}
+
+			return { prompt };
 		}
+	};
+
+	const Modal = ({ message }) => {
+		alert(message);
+		// return <p className="text-red-500 text-xs italic">{message}</p>;
 	};
 
 	const logOut = () => {

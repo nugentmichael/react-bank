@@ -44,7 +44,7 @@ const Portal = (props) => {
 		}
 
 		flag && setFlag(!flag);
-	}, [props.title, flag]);
+	}, [props.title, history, loggedIn, flag]);
 
 	return (
 		<div className="flex items-start justify-center py-8 w-full max-w-screen-xl">
