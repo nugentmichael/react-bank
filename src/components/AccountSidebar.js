@@ -13,6 +13,7 @@ const PortalSidebar = (props) => {
 	const [transferTo, setTransferTo] = useState('');
 	const [transferFromAccount, setTransferFromAccount] = useState();
 	const [transferToAccount, setTransferToAccount] = useState();
+	const [openModal, setOpenModal] = useState(false);
 	const [transferMessage, setTransferMessage] = useState('');
 
 	const transferValidation = (e) => {
@@ -30,7 +31,6 @@ const PortalSidebar = (props) => {
 
 	const transferFunds = (e) => {
 		e.preventDefault();
-		let prompt;
 
 		if (validTransfer && localStorage.getItem('bankAccounts')) {
 			// Check to see if the transfer amount is greater than what is currently available in the account and that the account has sufficient funds
@@ -38,20 +38,16 @@ const PortalSidebar = (props) => {
 				amount > bankAccounts[transferFrom] &&
 				!bankAccounts[transferFrom] <= 0
 			) {
-				prompt = (
-					<Modal
-						message={`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`}
-					/>
+				Modal(
+					`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
 				);
 				// alert(
 				// 	`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
 				// );
 			} else if (bankAccounts[transferFrom] <= 0) {
 				// Check to see if the account has insufficient funds - if not, halt the transfer
-				prompt = (
-					<Modal
-						message={`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`}
-					/>
+				Modal(
+					`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
 				);
 				// alert(
 				// 	`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
@@ -61,10 +57,8 @@ const PortalSidebar = (props) => {
 				// setTransferMessage(
 				// 	`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
 				// );
-				prompt = (
-					<Modal
-						message={`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`}
-					/>
+				Modal(
+					`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
 				);
 
 				// alert(
@@ -117,15 +111,27 @@ const PortalSidebar = (props) => {
 				setTransferTo('');
 				setFlag(!flag);
 			}
-
-			return { prompt };
 		}
 	};
 
-	const Modal = ({ message }) => {
-		alert(message);
-		// return <p className="text-red-500 text-xs italic">{message}</p>;
+	const toggleModal = () => {
+		openModal === false ? setOpenModal(true) : setOpenModal(false);
 	};
+
+	const Modal = ({ message }) => (
+		<div
+			className={
+				'w-full h-full fixed top-0 right-0 bottom-0 left-0 z-50 bg-blue-400 ' +
+				(openModal ? 'block' : 'hidden')
+			}
+		>
+			<section className="flex items-center justify-center h-full">
+				<div className="flex items-center justify-center bg-white w-3/6 h-3/6">
+					<p className="text-red-500 text-xs italic">{message}</p>
+				</div>
+			</section>
+		</div>
+	);
 
 	const logOut = () => {
 		localStorage.setItem(
@@ -141,6 +147,7 @@ const PortalSidebar = (props) => {
 
 	return (
 		<div className="w-auto max-w-xs p-8 text-left">
+			<Modal />
 			<h4 className="font-bold">Transfer Funds:</h4>
 			<h5 className="font-semibold mt-3">From:</h5>
 			<select
@@ -309,6 +316,7 @@ const PortalSidebar = (props) => {
 					onClick={transferFunds}
 				>
 					Transfer
+					<Modal message="Hello" />
 				</button>
 			</form>
 			<hr className="my-5" />
