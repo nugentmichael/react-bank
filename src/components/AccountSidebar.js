@@ -38,37 +38,25 @@ const PortalSidebar = (props) => {
 				amount > bankAccounts[transferFrom] &&
 				!bankAccounts[transferFrom] <= 0
 			) {
-				Modal(
+				setTransferMessage(
 					`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
 				);
-				// alert(
-				// 	`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
-				// );
 			} else if (bankAccounts[transferFrom] <= 0) {
 				// Check to see if the account has insufficient funds - if not, halt the transfer
-				Modal(
+				setTransferMessage(
 					`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
 				);
-				// alert(
-				// 	`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
-				// );
 			} else {
 				// Prompt the user to confirm the transfer amount
-				// setTransferMessage(
-				// 	`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
-				// );
-				Modal(
+				setTransferMessage(
 					`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
 				);
-
-				// alert(
-				// 	`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
-				// );
 
 				// Subtract the amount from the selected From account and add it to the selected To account
 				bankAccounts[transferFrom] = Number(
 					(bankAccounts[transferFrom] - amount).toFixed(2)
 				);
+
 				bankAccounts[transferTo] = Number(
 					(bankAccounts[transferTo] += +amount).toFixed(2)
 				);
@@ -114,15 +102,15 @@ const PortalSidebar = (props) => {
 		}
 	};
 
-	const toggleModal = () => {
-		openModal === false ? setOpenModal(true) : setOpenModal(false);
-	};
+	// const toggleModal = () => {
+	// 	openModal === false ? setOpenModal(true) : setOpenModal(false);
+	// };
 
 	const Modal = ({ message }) => (
 		<div
 			className={
-				'w-full h-full fixed top-0 right-0 bottom-0 left-0 z-50 bg-blue-400 ' +
-				(openModal ? 'block' : 'hidden')
+				'modal w-full h-full fixed top-0 right-0 bottom-0 left-0 z-50 bg-blue-400 block'
+				// (openModal ? 'block' : 'hidden')
 			}
 		>
 			<section className="flex items-center justify-center h-full">
@@ -147,7 +135,6 @@ const PortalSidebar = (props) => {
 
 	return (
 		<div className="w-auto max-w-xs p-8 text-left">
-			<Modal />
 			<h4 className="font-bold">Transfer Funds:</h4>
 			<h5 className="font-semibold mt-3">From:</h5>
 			<select
@@ -316,8 +303,8 @@ const PortalSidebar = (props) => {
 					onClick={transferFunds}
 				>
 					Transfer
-					<Modal message="Hello" />
 				</button>
+				{transferMessage && <Modal message={transferMessage} />}
 			</form>
 			<hr className="my-5" />
 			<h4 className="font-bold">Banking Needs:</h4>
