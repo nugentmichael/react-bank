@@ -109,13 +109,30 @@ const PortalSidebar = (props) => {
 	const Modal = ({ message }) => (
 		<div
 			className={
-				'modal w-full h-full fixed top-0 right-0 bottom-0 left-0 z-50 bg-blue-400 block'
+				'w-full h-full fixed top-0 right-0 bottom-0 left-0 z-50 bg-blue-100 bg-opacity-90 block'
 				// (openModal ? 'block' : 'hidden')
 			}
 		>
 			<section className="flex items-center justify-center h-full">
-				<div className="flex items-center justify-center bg-white w-3/6 h-3/6">
-					<p className="text-red-500 text-xs italic">{message}</p>
+				<div className="flex flex-col items-center justify-center bg-white w-3/6 h-1/4 border-4 border-blue-500 border-opacity-30 rounded-lg">
+					<div className="my-4">
+						<p className="text-l">{message}</p>
+					</div>
+
+					<div>
+						<button
+							className="mr-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+							onClick={setTransferMessage(null)}
+						>
+							Proceed
+						</button>
+						<button
+							className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+							onClick={setTransferMessage(null)}
+						>
+							Cancel
+						</button>
+					</div>
 				</div>
 			</section>
 		</div>
@@ -304,7 +321,8 @@ const PortalSidebar = (props) => {
 				>
 					Transfer
 				</button>
-				{transferMessage && <Modal message={transferMessage} />}
+				{/* {transferMessage && <Modal message={transferMessage} />} */}
+				<Modal message="Hello" />
 			</form>
 			<hr className="my-5" />
 			<h4 className="font-bold">Banking Needs:</h4>
