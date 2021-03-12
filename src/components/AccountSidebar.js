@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-// import Modal from './Modal';
+import Modal from './Modal';
 
 const PortalSidebar = (props) => {
 	const { chequing, savings, creditCard, rrsp, tfsa, flag, setFlag } = props;
@@ -13,7 +13,6 @@ const PortalSidebar = (props) => {
 	const [transferTo, setTransferTo] = useState('');
 	const [transferFromAccount, setTransferFromAccount] = useState();
 	const [transferToAccount, setTransferToAccount] = useState();
-	const [openModal, setOpenModal] = useState(false);
 	const [transferMessage, setTransferMessage] = useState('');
 
 	const transferValidation = (e) => {
@@ -29,7 +28,7 @@ const PortalSidebar = (props) => {
 		}
 	};
 
-	const transferFunds = (e) => {
+	const confirmTransfer = (e) => {
 		e.preventDefault();
 
 		if (validTransfer && localStorage.getItem('bankAccounts')) {
@@ -52,91 +51,53 @@ const PortalSidebar = (props) => {
 					`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
 				);
 
-				// Subtract the amount from the selected From account and add it to the selected To account
-				bankAccounts[transferFrom] = Number(
-					(bankAccounts[transferFrom] - amount).toFixed(2)
-				);
-
-				bankAccounts[transferTo] = Number(
-					(bankAccounts[transferTo] += +amount).toFixed(2)
-				);
-
-				// Update the Bank Accounts Local Storage item
-				localStorage.setItem(
-					'bankAccounts',
-					JSON.stringify(bankAccounts)
-				);
-
-				// Add to the fund transfer details to the Transactions LocalStorage object.
-				transactions[transferTo].push({
-					amount: Number(amount).toFixed(2),
-					date: new Date().toISOString().slice(0, 10),
-					description: `Funds Transfer From ${transferFromAccount} Account: $${Number(
-						amount
-					).toFixed(2)}.`,
-				});
-
-				transactions[transferFrom].push({
-					amount: Number(amount).toFixed(2),
-					date: new Date().toISOString().slice(0, 10),
-					description: `Funds Transfer To ${transferToAccount} Account: $${Number(
-						amount
-					).toFixed(2)}.`,
-				});
-
-				// Update the Transactions Local Storage item
-				localStorage.setItem(
-					'transactions',
-					JSON.stringify(transactions)
-				);
-
-				// Update the valid transfer state to reload the component to display the new account amounts
-				setValidTransfer(false);
-
-				// Reset the Account Transfer fields
-				setAmount('');
-				setTransferFrom('');
-				setTransferTo('');
-				setFlag(!flag);
+				transferFunds();
 			}
 		}
 	};
 
-	// const toggleModal = () => {
-	// 	openModal === false ? setOpenModal(true) : setOpenModal(false);
-	// };
+	const transferFunds = () => {
+		// Subtract the amount from the selected From account and add it to the selected To account
+		bankAccounts[transferFrom] = Number(
+			(bankAccounts[transferFrom] - amount).toFixed(2)
+		);
 
-	const Modal = ({ message }) => (
-		<div
-			className={
-				'w-full h-full fixed top-0 right-0 bottom-0 left-0 z-50 bg-blue-100 bg-opacity-90 block'
-				// (openModal ? 'block' : 'hidden')
-			}
-		>
-			<section className="flex items-center justify-center h-full">
-				<div className="flex flex-col items-center justify-center bg-white w-3/6 h-1/4 border-4 border-blue-500 border-opacity-30 rounded-lg">
-					<div className="my-4">
-						<p className="text-l">{message}</p>
-					</div>
+		bankAccounts[transferTo] = Number(
+			(bankAccounts[transferTo] += +amount).toFixed(2)
+		);
 
-					<div>
-						<button
-							className="mr-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-							onClick={setTransferMessage(null)}
-						>
-							Proceed
-						</button>
-						<button
-							className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-							onClick={setTransferMessage(null)}
-						>
-							Cancel
-						</button>
-					</div>
-				</div>
-			</section>
-		</div>
-	);
+		// Update the Bank Accounts Local Storage item
+		localStorage.setItem('bankAccounts', JSON.stringify(bankAccounts));
+
+		// Add to the fund transfer details to the Transactions LocalStorage object.
+		transactions[transferTo].push({
+			amount: Number(amount).toFixed(2),
+			date: new Date().toISOString().slice(0, 10),
+			description: `Funds Transfer From ${transferFromAccount} Account: $${Number(
+				amount
+			).toFixed(2)}.`,
+		});
+
+		transactions[transferFrom].push({
+			amount: Number(amount).toFixed(2),
+			date: new Date().toISOString().slice(0, 10),
+			description: `Funds Transfer To ${transferToAccount} Account: $${Number(
+				amount
+			).toFixed(2)}.`,
+		});
+
+		// Update the Transactions Local Storage item
+		localStorage.setItem('transactions', JSON.stringify(transactions));
+
+		// Update the valid transfer state to reload the component to display the new account amounts
+		setValidTransfer(false);
+
+		// Reset the Account Transfer fields
+		setAmount('');
+		setTransferFrom('');
+		setTransferTo('');
+		setFlag(!flag);
+	};
 
 	const logOut = () => {
 		localStorage.setItem(
@@ -303,7 +264,7 @@ const PortalSidebar = (props) => {
 						: tfsa.toLocaleString()}
 				</option>
 			</select>
-			<form className="flex items-center" onSubmit={transferFunds}>
+			<form className="flex items-center" onSubmit={confirmTransfer}>
 				<input
 					className="my-3 mr-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
 					id="transferAmount"
@@ -317,12 +278,14 @@ const PortalSidebar = (props) => {
 						'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' +
 						(!validTransfer && ' opacity-50 cursor-not-allowed')
 					}
-					onClick={transferFunds}
+					onClick={confirmTransfer}
 				>
 					Transfer
 				</button>
-				{/* {transferMessage && <Modal message={transferMessage} />} */}
-				<Modal message="Hello" />
+				{transferMessage && (
+					<Modal open={true} message={transferMessage} />
+				)}
+				{/* <Modal message="Hello" /> */}
 			</form>
 			<hr className="my-5" />
 			<h4 className="font-bold">Banking Needs:</h4>
