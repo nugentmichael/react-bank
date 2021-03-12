@@ -50,8 +50,6 @@ const PortalSidebar = (props) => {
 				setTransferMessage(
 					`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
 				);
-
-				transferFunds();
 			}
 		}
 	};
@@ -89,8 +87,13 @@ const PortalSidebar = (props) => {
 		// Update the Transactions Local Storage item
 		localStorage.setItem('transactions', JSON.stringify(transactions));
 
+		resetTransfer();
+	};
+
+	const resetTransfer = () => {
 		// Update the valid transfer state to reload the component to display the new account amounts
 		setValidTransfer(false);
+		setTransferMessage(null);
 
 		// Reset the Account Transfer fields
 		setAmount('');
@@ -283,9 +286,13 @@ const PortalSidebar = (props) => {
 					Transfer
 				</button>
 				{transferMessage && (
-					<Modal open={true} message={transferMessage} />
+					<Modal
+						open={true}
+						message={transferMessage}
+						func={transferFunds}
+						cancel={resetTransfer}
+					/>
 				)}
-				{/* <Modal message="Hello" /> */}
 			</form>
 			<hr className="my-5" />
 			<h4 className="font-bold">Banking Needs:</h4>

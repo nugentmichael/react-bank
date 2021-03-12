@@ -1,15 +1,8 @@
 import React, { useState } from 'react';
 
 const Modal = (props) => {
-	const { message, open } = props;
+	const { message, open, func, cancel } = props;
 	const [openModal, setOpenModal] = useState(open);
-	const [transferMessage, setTransferMessage] = useState('');
-
-	const toggleModal = () => {
-		openModal === false ? setOpenModal(true) : setOpenModal(false);
-	};
-
-	console.log(props);
 
 	return (
 		<div
@@ -19,7 +12,7 @@ const Modal = (props) => {
 			}
 		>
 			<section className="flex items-center justify-center h-full">
-				<div className="flex flex-col items-center justify-center bg-white w-3/6 h-1/4 border-4 border-blue-500 border-opacity-30 rounded-lg">
+				<div className="flex flex-col items-center justify-center p-4 bg-white w-3/6 h-1/5 border-4 border-blue-500 border-opacity-30 rounded-lg">
 					<div className="my-4">
 						<p className="text-l">{message}</p>
 					</div>
@@ -27,13 +20,19 @@ const Modal = (props) => {
 					<div>
 						<button
 							className="mr-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-							onClick={setTransferMessage(null)}
+							onClick={() => {
+								func();
+								setOpenModal(false);
+							}}
 						>
 							Proceed
 						</button>
 						<button
 							className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-							onClick={setTransferMessage(null)}
+							onClick={() => {
+								cancel();
+								setOpenModal(false);
+							}}
 						>
 							Cancel
 						</button>
