@@ -14,6 +14,7 @@ const PortalSidebar = (props) => {
 	const [transferFromAccount, setTransferFromAccount] = useState();
 	const [transferToAccount, setTransferToAccount] = useState();
 	const [transferMessage, setTransferMessage] = useState('');
+	const [modalMessage, setModalMessage] = useState('');
 
 	const transferValidation = (e) => {
 		if (
@@ -287,7 +288,6 @@ const PortalSidebar = (props) => {
 				</button>
 				{transferMessage && (
 					<Modal
-						open={true}
 						message={transferMessage}
 						func={transferFunds}
 						cancel={resetTransfer}
@@ -297,14 +297,32 @@ const PortalSidebar = (props) => {
 			<hr className="my-5" />
 			<h4 className="font-bold">Banking Needs:</h4>
 			<ul>
-				<li>
-					<a href="#">Statements</a>
+				<li
+					onClick={() =>
+						setModalMessage(
+							'Statements are a feature that is coming soon!'
+						)
+					}
+				>
+					Statements
 				</li>
-				<li>
-					<a href="#">Messages</a>
+				<li
+					onClick={() =>
+						setModalMessage(
+							'Messages are a feature that is coming soon!'
+						)
+					}
+				>
+					Messages
 				</li>
-				<li>
-					<a href="#">Alerts</a>
+				<li
+					onClick={() =>
+						setModalMessage(
+							'Alerts are a feature that is coming soon!'
+						)
+					}
+				>
+					Alerts
 				</li>
 				<li className="my-5">
 					<button
@@ -315,6 +333,7 @@ const PortalSidebar = (props) => {
 					</button>
 				</li>
 			</ul>
+			{modalMessage && <Modal message={modalMessage} />}
 		</div>
 	);
 };
