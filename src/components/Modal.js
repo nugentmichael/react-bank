@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 const Modal = (props) => {
-	const { message, open, func, cancel } = props;
-	const [openModal, setOpenModal] = useState(open);
+	const { message, func, cancel } = props;
+	const [openModal, setOpenModal] = useState(true);
 
 	return (
 		<div
