@@ -39,16 +39,19 @@ const PortalSidebar = (props) => {
 				amount > bankAccounts[transferFrom] &&
 				!bankAccounts[transferFrom] <= 0
 			) {
+				setOpenModal(true);
 				setTransferMessage(
 					`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
 				);
 			} else if (bankAccounts[transferFrom] <= 0) {
 				// Check to see if the account has insufficient funds - if not, halt the transfer
+				setOpenModal(true);
 				setTransferMessage(
 					`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
 				);
 			} else {
 				// Prompt the user to confirm the transfer amount
+				setOpenModal(true);
 				setTransferMessage(
 					`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
 				);
@@ -289,6 +292,8 @@ const PortalSidebar = (props) => {
 				</button>
 				{transferMessage && (
 					<Modal
+						open={openModal}
+						toggle={setOpenModal}
 						message={transferMessage}
 						func={transferFunds}
 						cancel={resetTransfer}
@@ -337,11 +342,12 @@ const PortalSidebar = (props) => {
 					</button>
 				</li>
 			</ul>
-			{openModal && modalMessage && (
+			{modalMessage && (
 				<Modal
 					open={openModal}
 					toggle={setOpenModal}
 					message={modalMessage}
+					cancel={setOpenModal}
 				/>
 			)}
 		</div>
