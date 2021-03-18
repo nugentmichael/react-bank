@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Modal from './Modal';
 
@@ -14,7 +14,6 @@ const PortalSidebar = (props) => {
 	const [transferFromAccount, setTransferFromAccount] = useState();
 	const [transferToAccount, setTransferToAccount] = useState();
 	const [transferMessage, setTransferMessage] = useState('');
-	const [openModal, setOpenModal] = useState(false);
 	const [modalMessage, setModalMessage] = useState('');
 
 	const transferValidation = (e) => {
@@ -39,19 +38,16 @@ const PortalSidebar = (props) => {
 				amount > bankAccounts[transferFrom] &&
 				!bankAccounts[transferFrom] <= 0
 			) {
-				setOpenModal(true);
 				setTransferMessage(
 					`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
 				);
 			} else if (bankAccounts[transferFrom] <= 0) {
 				// Check to see if the account has insufficient funds - if not, halt the transfer
-				setOpenModal(true);
 				setTransferMessage(
 					`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
 				);
 			} else {
 				// Prompt the user to confirm the transfer amount
-				setOpenModal(true);
 				setTransferMessage(
 					`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
 				);
@@ -106,6 +102,8 @@ const PortalSidebar = (props) => {
 		setTransferTo('');
 		setFlag(!flag);
 	};
+
+	const resetMessage = () => setModalMessage(null);
 
 	const logOut = () => {
 		localStorage.setItem(
@@ -292,8 +290,6 @@ const PortalSidebar = (props) => {
 				</button>
 				{transferMessage && (
 					<Modal
-						open={openModal}
-						toggle={setOpenModal}
 						message={transferMessage}
 						func={transferFunds}
 						cancel={resetTransfer}
@@ -304,32 +300,29 @@ const PortalSidebar = (props) => {
 			<h4 className="font-bold">Banking Needs:</h4>
 			<ul>
 				<li
-					onClick={() => {
-						setOpenModal(true);
+					onClick={() =>
 						setModalMessage(
 							'Statements are a feature that is coming soon!'
-						);
-					}}
+						)
+					}
 				>
 					Statements
 				</li>
 				<li
-					onClick={() => {
-						setOpenModal(true);
+					onClick={() =>
 						setModalMessage(
 							'Messages are a feature that is coming soon!'
-						);
-					}}
+						)
+					}
 				>
 					Messages
 				</li>
 				<li
-					onClick={() => {
-						setOpenModal(true);
+					onClick={() =>
 						setModalMessage(
 							'Alerts are a feature that is coming soon!'
-						);
-					}}
+						)
+					}
 				>
 					Alerts
 				</li>
@@ -343,12 +336,7 @@ const PortalSidebar = (props) => {
 				</li>
 			</ul>
 			{modalMessage && (
-				<Modal
-					open={openModal}
-					toggle={setOpenModal}
-					message={modalMessage}
-					cancel={setOpenModal}
-				/>
+				<Modal message={modalMessage} cancel={resetMessage} />
 			)}
 		</div>
 	);
