@@ -21,7 +21,7 @@ const Modal = (props) => {
 									: setOpenModal(!openModal);
 							}}
 						>
-							Proceed
+							Okay
 						</button>
 					)}
 					{cancel && (
