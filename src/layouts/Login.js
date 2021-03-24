@@ -9,16 +9,16 @@ const Login = (props) => {
 	return (
 		<div className="personal-login flex items-center justify-around py-20 w-full">
 			<div className="bg-black bg-opacity-25 p-4 text-white">
-				<h3>
+				<h1>
 					Welcome to React Bank!{' '}
 					<span role="img" aria-label="Bank Emoji">
 						🏦
 					</span>
-				</h3>
-				<h4>
+				</h1>
+				<h3>
 					Your home for managing your finances using the latest web
 					technologies.
-				</h4>
+				</h3>
 			</div>
 			<div className="w-full max-w-xs">
 				<LoginForm />

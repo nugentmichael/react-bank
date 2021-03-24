@@ -38,7 +38,7 @@ const Transactions = (props) => {
 					>
 						&laquo; Return to Accounts
 					</Link>
-					<h2 className="font-bold">React Bank</h2>
+					<h1 className="font-bold">React Bank</h1>
 					<h3>Your Recent Transactions</h3>
 					<div className="flex my-3">
 						<div className="flex flex-col justify-center flex-grow">
