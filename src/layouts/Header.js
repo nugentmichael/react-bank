@@ -12,11 +12,13 @@ const Header = () => {
 	return (
 		<header className="sm:flex sm:justify-between px-4 py-3 bg-gray-800">
 			<div className="flex items-center justify-between">
-				<img
-					src={logo}
-					className="bank-logo h-20 w-20"
-					alt="React Bank Logo"
-				/>
+				<Link to="/">
+					<img
+						src={logo}
+						className="bank-logo h-20 w-20"
+						alt="React Bank Logo"
+					/>
+				</Link>
 
 				<button
 					type="button"
