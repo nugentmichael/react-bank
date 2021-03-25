@@ -35,9 +35,10 @@ const About = (props) => {
 					href="https://github.com/nugentmichael/react-bank"
 					target="_blank"
 					rel="noopener noreferrer"
-					className="inline-block my-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 				>
-					Contribute Today!
+					<button className="inline-block my-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+						Contribute Today!
+					</button>
 				</a>
 			</div>
 		</div>
