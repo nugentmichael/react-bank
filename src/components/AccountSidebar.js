@@ -272,7 +272,7 @@ const PortalSidebar = (props) => {
 			</select>
 			<form className="flex items-center" onSubmit={confirmTransfer}>
 				<input
-					className="my-3 mr-1 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+					className="my-3 mr-1 shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
 					id="transferAmount"
 					type="text"
 					placeholder="$0.00"
