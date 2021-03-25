@@ -14,7 +14,7 @@ const Modal = (props) => {
 				<div>
 					{func && (
 						<button
-							className="mr-3 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+							className="mr-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 							onClick={() => {
 								func && func !== (false || null)
 									? func()
@@ -26,7 +26,7 @@ const Modal = (props) => {
 					)}
 					{cancel && (
 						<button
-							className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+							className="bg-transparent hover:bg-blue-700 text-blue-500 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 							onClick={() => {
 								cancel && cancel !== (false || null)
 									? cancel()
