@@ -39,17 +39,39 @@ const PortalSidebar = (props) => {
 				!bankAccounts[transferFrom] <= 0
 			) {
 				setTransferMessage(
-					`The amount that you are requesting to transfer ($${amount}) is higher than what is currently available in your ${transferFromAccount} account ($${bankAccounts[transferFrom]}).`
+					<p>
+						The amount that you are requesting to transfer{' '}
+						<strong>
+							($
+							{amount})
+						</strong>{' '}
+						is higher than what is currently available in your{' '}
+						<strong>{transferFromAccount}</strong> account{' '}
+						<strong>
+							($
+							{bankAccounts[transferFrom]})
+						</strong>
+						.
+					</p>
 				);
 			} else if (bankAccounts[transferFrom] <= 0) {
 				// Check to see if the account has insufficient funds - if not, halt the transfer
 				setTransferMessage(
-					`You do not have sufficient funds in your ${transferFromAccount} ($${bankAccounts[transferFrom]}).`
+					<p>
+						You do not have sufficient funds in your{' '}
+						<strong>{transferFromAccount}</strong> account{' '}
+						<strong>(${bankAccounts[transferFrom]})</strong>.
+					</p>
 				);
 			} else {
 				// Prompt the user to confirm the transfer amount
 				setTransferMessage(
-					`Are you sure you want to transfer $${amount} from your ${transferFromAccount} account to ${transferToAccount} account?`
+					<p>
+						Are you sure you want to transfer{' '}
+						<strong>${amount}</strong> from your{' '}
+						<strong>{transferFromAccount}</strong> account to your{' '}
+						<strong>{transferToAccount}</strong> account?
+					</p>
 				);
 			}
 		}
