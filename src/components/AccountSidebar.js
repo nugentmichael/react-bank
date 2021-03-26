@@ -322,27 +322,39 @@ const PortalSidebar = (props) => {
 			<h4 className="font-bold">Banking Needs:</h4>
 			<ul>
 				<li
+					className="cursor-pointer"
 					onClick={() =>
 						setModalMessage(
-							'Statements are a feature that is coming soon!'
+							<p>
+								<strong>Statements</strong> is a feature that is
+								coming soon!
+							</p>
 						)
 					}
 				>
 					Statements
 				</li>
 				<li
+					className="cursor-pointer"
 					onClick={() =>
 						setModalMessage(
-							'Messages are a feature that is coming soon!'
+							<p>
+								<strong>Messages</strong> is a feature that is
+								coming soon!
+							</p>
 						)
 					}
 				>
 					Messages
 				</li>
 				<li
+					className="cursor-pointer"
 					onClick={() =>
 						setModalMessage(
-							'Alerts are a feature that is coming soon!'
+							<p>
+								<strong>Alerts</strong> is a feature that is
+								coming soon!
+							</p>
 						)
 					}
 				>
