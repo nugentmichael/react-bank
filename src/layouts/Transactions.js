@@ -28,6 +28,8 @@ const Transactions = (props) => {
 		];
 	}
 
+	const pagination = () => {};
+
 	return (
 		<div className="flex items-start justify-center py-8 w-full max-w-screen-xl">
 			<div className="w-1/2 text-left">
@@ -64,6 +66,7 @@ const Transactions = (props) => {
 						{localStorage.getItem('transactions') ? (
 							transactionDetails
 								.reverse()
+								.slice(0, 25)
 								.map((transaction, index) => (
 									<li
 										key={index}
