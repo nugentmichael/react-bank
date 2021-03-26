@@ -28,8 +28,6 @@ const Transactions = (props) => {
 		];
 	}
 
-	const pagination = () => {};
-
 	return (
 		<div className="flex items-start justify-center py-8 w-full max-w-screen-xl">
 			<div className="w-1/2 text-left">
