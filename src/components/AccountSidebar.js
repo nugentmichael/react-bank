@@ -140,10 +140,11 @@ const PortalSidebar = (props) => {
 	};
 
 	return (
-		<div className="w-auto max-w-xs p-8 text-left">
+		<div className="md:w-auto w-full md:max-w-xs md:p-8 text-left">
 			<h4 className="font-bold">Transfer Funds:</h4>
 			<h5 className="font-semibold mt-3">From:</h5>
 			<select
+				className="w-full"
 				value={transferFrom}
 				onChange={(e) => {
 					setTransferFrom(e.target.value);
@@ -219,6 +220,7 @@ const PortalSidebar = (props) => {
 			</select>
 			<h5 className="font-semibold mt-3">To:</h5>
 			<select
+				className="w-full"
 				value={transferTo}
 				onChange={(e) => {
 					setTransferTo(e.target.value);
@@ -292,9 +294,12 @@ const PortalSidebar = (props) => {
 						: tfsa.toLocaleString()}
 				</option>
 			</select>
-			<form className="flex items-center" onSubmit={confirmTransfer}>
+			<form
+				className="flex items-center flex-wrap md:flex-nowrap"
+				onSubmit={confirmTransfer}
+			>
 				<input
-					className="my-3 mr-1 shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+					className="my-3 mr-1 shadow appearance-none border rounded md:w-1/2 w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
 					id="transferAmount"
 					type="text"
 					placeholder="$0.00"
@@ -303,7 +308,7 @@ const PortalSidebar = (props) => {
 				/>
 				<button
 					className={
-						'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' +
+						'md:w-auto w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' +
 						(!validTransfer && ' opacity-50 cursor-not-allowed')
 					}
 					onClick={confirmTransfer}
