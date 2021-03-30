@@ -76,7 +76,7 @@ const Portal = (props) => {
 							}}
 						>
 							<li className="flex my-3 py-3 border-b border-gray-300">
-								<div className="flex flex-col justify-center flex-grow">
+								<div className="flex flex-col justify-center flex-grow mr-4">
 									<span>Supreme No Limit Chequing</span>
 									<span className="block text-xs">
 										Chequing 00012-1234567
@@ -116,7 +116,7 @@ const Portal = (props) => {
 							}}
 						>
 							<li className="flex my-3 py-3">
-								<div className="flex flex-col justify-center flex-grow">
+								<div className="flex flex-col justify-center flex-grow mr-4">
 									<span>High Interest Savings</span>
 									<span className="block text-xs">
 										Savings 00034-5678912
@@ -161,7 +161,7 @@ const Portal = (props) => {
 							}}
 						>
 							<li className="flex my-3 py-3">
-								<div className="flex flex-col justify-center flex-grow">
+								<div className="flex flex-col justify-center flex-grow mr-4">
 									<span>Cash Back MasterCard</span>
 									<span className="block text-xs">
 										Credit Card 1234 5678 9123 4567
@@ -207,7 +207,7 @@ const Portal = (props) => {
 							}}
 						>
 							<li className="flex my-3 py-3 border-b border-gray-300">
-								<div className="flex flex-col justify-center flex-grow">
+								<div className="flex flex-col justify-center flex-grow mr-4">
 									<span>RRSP</span>
 									<span className="block text-xs">
 										Registered Retirement Savings Plan
@@ -249,7 +249,7 @@ const Portal = (props) => {
 							}}
 						>
 							<li className="flex my-3 py-3">
-								<div className="flex flex-col justify-center flex-grow">
+								<div className="flex flex-col justify-center flex-grow mr-4">
 									<span>TFSA</span>
 									<span className="block text-xs">
 										Tax-Free Savings Account 00089-5678912
