@@ -29,8 +29,8 @@ const Transactions = (props) => {
 	}
 
 	return (
-		<div className="flex items-start justify-center py-8 w-full max-w-screen-xl">
-			<div className="w-1/2 text-left">
+		<div className="flex items-start justify-center flex-wrap md:flex-nowrap p-8 w-full max-w-screen-xl">
+			<div className="md:w-1/2 w-full text-left">
 				<div className="pt-8">
 					<Link
 						to="/portal"
@@ -41,7 +41,7 @@ const Transactions = (props) => {
 					<h1 className="font-bold">React Bank</h1>
 					<h3>Your Recent Transactions</h3>
 					<div className="flex my-3">
-						<div className="flex flex-col justify-center flex-grow">
+						<div className="flex flex-col justify-center flex-grow mr-4">
 							<span>{account.name}</span>
 							<span className="block text-xs">
 								{account.type}
@@ -70,7 +70,7 @@ const Transactions = (props) => {
 										key={index}
 										className="flex my-3 py-3 border-b border-gray-300"
 									>
-										<div className="flex flex-col justify-center flex-grow">
+										<div className="flex flex-col justify-center flex-grow mr-4">
 											<span>
 												{transaction.description}
 											</span>
