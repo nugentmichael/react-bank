@@ -47,8 +47,8 @@ const Portal = (props) => {
 	}, [props.title, history, loggedIn, flag]);
 
 	return (
-		<div className="flex items-start justify-center py-8 w-full max-w-screen-xl">
-			<div className="w-1/2 text-left">
+		<div className="flex items-start justify-center flex-wrap md:flex-nowrap p-8 w-full max-w-screen-xl">
+			<div className="md:w-1/2 w-full text-left">
 				<div className="pt-8">
 					<h1 className="font-bold">Weclome{user && `, ${user}`}!</h1>
 					<h3>You are now logged in to React Bank.</h3>
