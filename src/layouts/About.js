@@ -6,7 +6,7 @@ const About = (props) => {
 	}, [props.title]);
 
 	return (
-		<div className="flex items-center justify-center py-8 max-w-prose">
+		<div className="flex items-center justify-center p-8 max-w-prose">
 			<div>
 				<h1 className="mb-3">
 					<span role="img" aria-label="Bank Emoji">
