@@ -22,7 +22,8 @@ const Header = () => {
 
 				<button
 					className={
-						'inline-block hamburger' + (open ? ' is-active' : '')
+						'sm:hidden inline-block hamburger' +
+						(open ? ' is-active' : '')
 					}
 					type="button"
 					onClick={() => toggleMenu()}
@@ -35,21 +36,21 @@ const Header = () => {
 
 			<nav
 				className={
-					'sm:flex sm:items-center ' + (open ? 'block' : 'hidden')
+					'sm:flex sm:items-center' + (open ? ' block' : ' hidden')
 				}
 			>
 				<ul className="sm:flex">
-					<li className="font-semibold hover:bg-gray-400 rounded px-2">
+					<li className="font-semibold hover:bg-gray-400 rounded px-2 py-2">
 						<Link className="text-white" to="/">
 							Personal
 						</Link>
 					</li>
-					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2">
+					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2 py-2">
 						<Link className="text-white" to="/business">
 							Business
 						</Link>
 					</li>
-					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2">
+					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2 py-2">
 						<Link className="text-white" to="/about">
 							About
 						</Link>
