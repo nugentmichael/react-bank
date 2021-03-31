@@ -21,11 +21,13 @@ const Header = () => {
 				</Link>
 
 				<button
+					className="sm:hidden hamburger hamburger-spring"
 					type="button"
-					className="hover:text-white sm:hidden"
 					onClick={() => toggleMenu()}
 				>
-					Menu
+					<span className="hamburger-box">
+						<span className="hamburger-inner"></span>
+					</span>
 				</button>
 			</div>
 
