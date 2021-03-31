@@ -21,7 +21,9 @@ const Header = () => {
 				</Link>
 
 				<button
-					className="sm:hidden hamburger hamburger-spring"
+					className={
+						'inline-block hamburger' + (open ? ' is-active' : '')
+					}
 					type="button"
 					onClick={() => toggleMenu()}
 				>
