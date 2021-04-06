@@ -45,7 +45,7 @@ const Main = () => {
 					)}
 				/>
 				<Route
-					path="/error"
+					path="*"
 					render={() => (
 						<Error title={`React Bank - 404: Not Found`} />
 					)}
