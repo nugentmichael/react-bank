@@ -15,7 +15,7 @@ const Header = () => {
 				<Link to="/">
 					<img
 						src={logo}
-						className="bank-logo h-20 w-20"
+						className="h-16 w-16 transition duration-500 ease-in-out hover:opacity-75"
 						alt="React Bank Logo"
 					/>
 				</Link>
