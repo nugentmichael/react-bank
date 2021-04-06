@@ -6,7 +6,7 @@ const Modal = (props) => {
 
 	return (
 		<div className="w-full fixed top-0 right-0 bottom-0 left-0 flex items-center justify-center z-50 bg-blue-100 bg-opacity-90">
-			<div className="flex flex-col items-center justify-center p-4 bg-white w-3/6 border-4 border-blue-500 border-opacity-30 rounded-lg">
+			<div className="flex flex-col items-center justify-center p-4 bg-white md:w-3/6 w-4/5 border-4 border-blue-500 border-opacity-30 rounded-lg">
 				<div className="my-4">
 					<p className="text-l">{message}</p>
 				</div>
