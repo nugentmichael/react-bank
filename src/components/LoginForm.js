@@ -107,7 +107,7 @@ const LoginForm = () => {
 					Log In
 				</button>
 				<div className="relative">
-					<span className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800 tooltip">
+					<span className="inline-block align-baseline cursor-pointer font-bold text-sm text-blue-500 hover:text-blue-800 tooltip">
 						Forgot Login/Password?
 					</span>
 					<div className="absolute -top-14 w-full opacity-0 transition-opacity tooltip-text">
