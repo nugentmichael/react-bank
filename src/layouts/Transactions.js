@@ -33,7 +33,7 @@ const Transactions = (props) => {
 			<div className="md:w-1/2 w-full text-left">
 				<div className="pt-8">
 					<Link
-						to="/portal"
+						to={`${process.env.PUBLIC_URL}/portal`}
 						className="block mb-4 text-blue-500 hover:text-blue-700 focus:outline-none focus:shadow-outline"
 					>
 						&laquo; Return to Accounts

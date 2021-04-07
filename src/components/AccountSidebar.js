@@ -136,11 +136,11 @@ const PortalSidebar = (props) => {
 			})
 		);
 
-		history.push('/');
+		history.push('./');
 	};
 
 	return (
-		<div className="md:w-auto w-full md:max-w-xs md:p-8 text-left">
+		<div className="md:w-auto w-full md:p-8 text-left">
 			<h4 className="font-bold">Transfer Funds:</h4>
 			<h5 className="font-semibold mt-3">From:</h5>
 			<select

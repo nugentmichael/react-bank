@@ -59,7 +59,7 @@ const Portal = (props) => {
 					<ul>
 						<Link
 							to={{
-								pathname: '/portal/accounts/chequing',
+								pathname: './portal/accounts/chequing',
 							}}
 							onClick={() => {
 								localStorage.setItem(
@@ -99,7 +99,7 @@ const Portal = (props) => {
 						</Link>
 						<Link
 							to={{
-								pathname: '/portal/accounts/savings',
+								pathname: './portal/accounts/savings',
 							}}
 							onClick={() => {
 								localStorage.setItem(
@@ -144,7 +144,7 @@ const Portal = (props) => {
 					<ul>
 						<Link
 							to={{
-								pathname: '/portal/accounts/creditcard',
+								pathname: './portal/accounts/creditcard',
 							}}
 							onClick={() => {
 								localStorage.setItem(
@@ -189,7 +189,7 @@ const Portal = (props) => {
 					<ul>
 						<Link
 							to={{
-								pathname: '/portal/accounts/rrsp',
+								pathname: './portal/accounts/rrsp',
 							}}
 							onClick={() => {
 								localStorage.setItem(
@@ -231,7 +231,7 @@ const Portal = (props) => {
 						</Link>
 						<Link
 							to={{
-								pathname: '/portal/accounts/tfsa',
+								pathname: './portal/accounts/tfsa',
 							}}
 							onClick={() => {
 								localStorage.setItem(

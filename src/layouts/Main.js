@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Login from './Login';
 import Portal from './Portal';
 import Transactions from './Transactions';
@@ -11,25 +11,30 @@ const Main = () => {
 	return (
 		<>
 			<Switch>
-				<Route
-					path="/"
-					render={() => <Login title={`Welcome to React Bank!`} />}
+				<Redirect
 					exact
+					from="/react-bank"
+					to={`${process.env.PUBLIC_URL}/personal`}
 				/>
 				<Route
-					path="/business"
+					exact
+					path={`${process.env.PUBLIC_URL}/personal`}
+					render={() => <Login title={`Welcome to React Bank!`} />}
+				/>
+				<Route
+					exact
+					path={`${process.env.PUBLIC_URL}/business`}
 					render={() => (
 						<Business title={`React Bank - Business Accounts`} />
 					)}
-					exact
 				/>
 				<Route
-					path="/about"
+					path={`${process.env.PUBLIC_URL}/about`}
 					render={() => <About title={`React Bank - About Page`} />}
 				/>
 				<Route
-					path="/portal"
 					exact
+					path={`${process.env.PUBLIC_URL}/portal`}
 					render={() => (
 						<Portal
 							title={`React Bank - Your Online Bank Accounts`}
@@ -37,7 +42,7 @@ const Main = () => {
 					)}
 				/>
 				<Route
-					path="/portal/accounts*"
+					path={`${process.env.PUBLIC_URL}/portal/accounts*`}
 					render={() => (
 						<Transactions
 							title={`React Bank - Your Recent Transactions`}
@@ -45,7 +50,7 @@ const Main = () => {
 					)}
 				/>
 				<Route
-					path="*"
+					path={`${process.env.PUBLIC_URL}*`}
 					render={() => (
 						<Error title={`React Bank - 404: Not Found`} />
 					)}

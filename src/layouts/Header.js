@@ -12,7 +12,7 @@ const Header = () => {
 	return (
 		<header className="sm:flex sm:justify-between px-4 py-3 bg-gray-800">
 			<div className="flex items-center justify-between">
-				<Link to="/">
+				<Link to={`${process.env.PUBLIC_URL}/`}>
 					<img
 						src={logo}
 						className="h-16 w-16 transition duration-500 ease-in-out hover:opacity-75"
@@ -41,17 +41,26 @@ const Header = () => {
 			>
 				<ul className="sm:flex">
 					<li className="font-semibold hover:bg-gray-400 rounded px-2 py-2">
-						<Link className="text-white" to="/">
+						<Link
+							className="text-white"
+							to={`${process.env.PUBLIC_URL}/personal`}
+						>
 							Personal
 						</Link>
 					</li>
 					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2 py-2">
-						<Link className="text-white" to="/business">
+						<Link
+							className="text-white"
+							to={`${process.env.PUBLIC_URL}/business`}
+						>
 							Business
 						</Link>
 					</li>
 					<li className="sm:mt-0 sm:ml-2 mt-2 font-semibold hover:bg-gray-400 rounded px-2 py-2">
-						<Link className="text-white" to="/about">
+						<Link
+							className="text-white"
+							to={`${process.env.PUBLIC_URL}/about`}
+						>
 							About
 						</Link>
 					</li>
