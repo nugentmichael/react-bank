@@ -19,7 +19,7 @@ const Portal = (props) => {
 		document.title = props.title || 'React Bank';
 
 		// If the loggedIn flag is set to false, return the user to the main login page.
-		!loggedIn && history.push('/');
+		!loggedIn && history.push('./');
 
 		// Check to see if there is a Local Storage object containing the bank account details with their amounts, if not, create one.
 		if (!localStorage.getItem('bankAccounts')) {
