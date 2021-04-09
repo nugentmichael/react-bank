@@ -1,4 +1,4 @@
-# react-bank
+# React Bank Web App
 
 A concept of a modern online bank portal built using React and Tailwind CSS.
 
